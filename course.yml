@@ -1,5 +1,6 @@
 title            : BMB 2018
-description      : This is an automatically generated demo course which will help you on your way to create an awesome DataCamp course.
-university       : DataCamp
+description      : Online element of the BMB STAT course. 
+university       : Imperial College London
 difficulty_level : 2
+programming_language: r
 time_needed      : 1 hour
