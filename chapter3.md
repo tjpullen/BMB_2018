@@ -143,10 +143,11 @@ test_mc(correct = 2)
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8a8676de5d
 ## Probability vs frequency distributions (2)
 
-
+Which distribution remains the same as the number of repliates increases?
 
 *** =instructions
-
+- Probability distribution
+- Frequency distribution
 *** =hint
 
 *** =pre_exercise_code
@@ -156,10 +157,20 @@ test_mc(correct = 2)
 
 *** =sct
 ```{r}
-
+test_mc(correct = 1)
 ```
+
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:0fa695235f
+## The binomial distribution
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:52c2118876
-## Binomial distribution
+## The binomial distribution (2)
 
 Which of the following is NOT an example of a binomial distribution.
 
@@ -177,4 +188,41 @@ Which of the following is NOT an example of a binomial distribution.
 *** =sct
 ```{r}
 test_mc(correct = 2)
+```
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:fcc69d0787
+## The binomial distribution in R
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:29adcc84b0
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+barplot(dbinom(0:4, 4, 1/2), names.arg = 0:4, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "4 coins")
+barplot(c(rep(0,3),dbinom(3, 4, 1/2),rep(0,1)), names.arg = 0:4, space = 0, col = "red", add = T)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
