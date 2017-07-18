@@ -298,7 +298,7 @@ The `pnorm()` function works just like the `pbinom()` function to calculate the 
 
 
 *** =instructions
-What proportion of 19-year-old males would we expect to be under 170 cm tall?
+What proportion of 19-year-old males would you expect to be under 170 cm tall?
 
 Mean = 176.5 cm
 Standard deviation = 7.30
@@ -306,6 +306,12 @@ Standard deviation = 7.30
 
 *** =pre_exercise_code
 ```{r}
+mean = 176.5
+sd = 7.30
+lb = 150
+ub = 170
+x <- seq(150, 205, length.out = 1000)
+hx <- dnorm(x, mean = mean, sd = sd)
 plot(x, hx, type = "n", xlab = "Height (cm)", ylab = "Probability", main = "Male Height at 19 years")
 i <- x >= lb & x <= ub
 lines(x, hx)
