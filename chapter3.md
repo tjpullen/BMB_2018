@@ -270,7 +270,7 @@ barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red"
 *** =solution
 ```{r}
 # The probability of getting up to 3 heads from 6 coins
-pbinom(3, size = 6, prob = 0.5)
+dbinom(3, size = 6, prob = 0.5)
 
 ```
 
@@ -295,13 +295,12 @@ The `pnorm()` function works just like the `pbinom()` function to calculate the 
 
 `pnorm(x, mean, sd)`
 
-
-
 *** =instructions
 What proportion of 19-year-old males would you expect to be under 170 cm tall?
 
-Mean = 176.5 cm
-Standard deviation = 7.30
+- Mean = 176.5 cm
+- Standard deviation = 7.30
+
 *** =hint
 
 *** =pre_exercise_code
