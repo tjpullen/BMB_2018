@@ -199,8 +199,99 @@ test_mc(correct = 2)
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:29adcc84b0
-## <<<New Exercise>>>
+## Binomial calculations
 
+Now it's your turn to have a go.
+
+Remember the `dbinom()` function takes these arguments:
+`dbinom(x, size, prob)`
+
+*** =instructions
+What is the probability of getting **exactly 3 heads** from 4 coins?
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+barplot(dbinom(0:4, 4, 1/2), names.arg = 0:4, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "4 coins")
+barplot(c(rep(0,3),dbinom(3, 4, 1/2),rep(0,1)), names.arg = 0:4, space = 0, col = "red", add = T)
+```
+
+*** =sample_code
+```{r}
+# The probability of getting 3 heads from 4 coins
+
+
+```
+
+*** =solution
+```{r}
+# The probability of getting 3 heads from 4 coins
+dbinom(3, size = 4, prob = 0.5)
+
+```
+
+*** =sct
+```{r}
+test_function("dbinom", args = c("x", "size", "prob"))
+```
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:8db7a7a20e
+## Cumulative probability function
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:bf295d9c99
+## Binomial calculations (2)
+
+Now it's your turn to have a go.
+
+Remember the `pbinom()` function takes the same arguments as `dbinom()`
+
+*** =instructions
+What is the probability of getting **up to 3 heads** from 6 coins?
+(ie. 0, 1, 2 or 3 heads)
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+barplot(dbinom(0:6, 6, 1/2), names.arg = 0:6, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "6 coins")
+barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red", add = T)
+```
+
+*** =sample_code
+```{r}
+# The probability of getting up to 3 heads from 6 coins
+
+
+```
+
+*** =solution
+```{r}
+# The probability of getting up to 3 heads from 6 coins
+pbinom(3, size = 6, prob = 0.5)
+
+```
+
+*** =sct
+```{r}
+test_function("dbinom", args = c("x", "size", "prob"))
+```
+
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:9b2741b943
+## Discrete vs continuous variables
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:35334c600a
+## Normal distribution calculations
+
+The `pnorm()` function works just like the `pbinom()` function to calculate the cumulative probability.
 
 *** =instructions
 
@@ -208,8 +299,7 @@ test_mc(correct = 2)
 
 *** =pre_exercise_code
 ```{r}
-barplot(dbinom(0:4, 4, 1/2), names.arg = 0:4, space = 0, col = "grey", xlab = "No of heads", ylab = "Probability", main = "4 coins")
-barplot(c(rep(0,3),dbinom(3, 4, 1/2),rep(0,1)), names.arg = 0:4, space = 0, col = "red", add = T)
+
 ```
 
 *** =sample_code
