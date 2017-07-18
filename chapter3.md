@@ -291,28 +291,42 @@ test_function("dbinom", args = c("x", "size", "prob"))
 --- type:NormalExercise lang:r xp:100 skills:1 key:35334c600a
 ## Normal distribution calculations
 
-The `pnorm()` function works just like the `pbinom()` function to calculate the cumulative probability.
+The `pnorm()` function works just like the `pbinom()` function to calculate the cumulative probability, but of the normal distribution rather than the binomial. It takes the following arguments:
+
+`pnorm(x, mean, sd)`
+
+
 
 *** =instructions
+What proportion of 19-year-old males would we expect to be under 170 cm tall?
 
+Mean = 176.5 cm
+Standard deviation = 7.30
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+plot(x, hx, type = "n", xlab = "Height (cm)", ylab = "Probability", main = "Male Height at 19 years")
+i <- x >= lb & x <= ub
+lines(x, hx)
+polygon(c(min(x[i]), x[i], max(x[i])), c(0, hx[i], 0), col = "red")
 ```
 
 *** =sample_code
 ```{r}
+# Proportion of 19-year-old males <170 cm
+
 
 ```
 
 *** =solution
 ```{r}
+# Proportion of 19-year-old males <170 cm
+pnorm(170, mean = 176.5, sd = 7.30)
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("pnorm", args = c("x", "mean", "sd"))
 ```
