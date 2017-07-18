@@ -11,7 +11,7 @@ description : Understanding uncertainty
 //player.vimeo.com/video/154783078
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:cd4dd49ae9
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:cd4dd49ae9
 ## How am I going to die?
 
 What is the risk of being killed by lightning in the next year?
@@ -44,7 +44,7 @@ test_mc(correct = 4)
 //player.vimeo.com/video/154783078
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d639cec9ad
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:d639cec9ad
 ## Probability is...
 
 Which is the best definition of probability?
@@ -76,3 +76,105 @@ test_mc(correct = 4)
 *** =video_link
 //player.vimeo.com/video/154783078
 
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:068f66a92b
+## Mutually exclusive outcomes
+
+When throwing a die, which of the following are NOT mutually exclusive outcomes?
+
+*** =instructions
+- 1 or 6
+- 1 or an even number
+- <3 or 6
+- <2 or an even number
+- <3 or an even number
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct = 5)
+```
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:a725b73ff0
+## Probability distributions
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:4e27ebef89
+## Independent events
+
+Which of the following are NOT independent events?
+
+*** =instructions
+- Tossing two coins
+- option 3
+- Throwing the same die twice
+- option 4
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:302535fefd
+## Probability vs frequency distributions
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8a8676de5d
+## Probability vs frequency distributions (2)
+
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:52c2118876
+## Binomial distribution
+
+Which of the following is NOT an example of a binomial distribution.
+
+*** =instructions
+- The likelihood of getting 2 wild-type offspring in a litter of 5 (from crossing two heterozygotes).
+- The number of coins you have to toss to get 3 heads.
+- The proportion of '6s' you get from throwing 3 dice.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
