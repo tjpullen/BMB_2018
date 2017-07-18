@@ -270,13 +270,13 @@ barplot(c(dbinom(0:3, 6, 1/2),rep(0,3)), names.arg = 0:6, space = 0, col = "red"
 *** =solution
 ```{r}
 # The probability of getting up to 3 heads from 6 coins
-dbinom(3, size = 6, prob = 0.5)
+pbinom(3, size = 6, prob = 0.5)
 
 ```
 
 *** =sct
 ```{r}
-test_function("dbinom", args = c("x", "size", "prob"))
+test_function("pbinom", args = c("q", "size", "prob"))
 ```
 
 
@@ -333,5 +333,5 @@ pnorm(170, mean = 176.5, sd = 7.30)
 
 *** =sct
 ```{r}
-test_function("pnorm", args = c("x", "mean", "sd"))
+test_function("pnorm", args = c("q", "mean", "sd"))
 ```
