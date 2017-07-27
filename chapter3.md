@@ -8,7 +8,7 @@ description : Understanding uncertainty
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/227280339
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:cd4dd49ae9
