@@ -166,7 +166,7 @@ test_mc(correct = 1)
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/227400550
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:52c2118876
@@ -195,7 +195,7 @@ test_mc(correct = 2)
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/227401923
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:29adcc84b0
@@ -240,7 +240,7 @@ test_function("dbinom", args = c("x", "size", "prob"))
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/227403950
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:bf295d9c99
 ## Binomial calculations (2)
@@ -285,7 +285,7 @@ test_function("pbinom", args = c("q", "size", "prob"))
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/227410811
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:35334c600a
@@ -295,18 +295,20 @@ The `pnorm()` function works just like the `pbinom()` function to calculate the 
 
 `pnorm(x, mean, sd)`
 
-*** =instructions
-What proportion of 19-year-old males would you expect to be under 170 cm tall?
+We've seen the example with 19-year-old males, so let's ask the same question about 19-year-old females with the parameters given below.
 
-- Mean = 176.5 cm
-- Standard deviation = 7.30
+*** =instructions
+What proportion of 19-year-old females would you expect to be under 170 cm tall?
+
+- Mean = 163.2 cm
+- Standard deviation = 6.54
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-mean = 176.5
-sd = 7.30
+mean = 163.2
+sd = 6.54
 lb = 150
 ub = 170
 x <- seq(150, 205, length.out = 1000)
@@ -319,15 +321,15 @@ polygon(c(min(x[i]), x[i], max(x[i])), c(0, hx[i], 0), col = "red")
 
 *** =sample_code
 ```{r}
-# Proportion of 19-year-old males <170 cm
+# Proportion of 19-year-old females <170 cm
 
 
 ```
 
 *** =solution
 ```{r}
-# Proportion of 19-year-old males <170 cm
-pnorm(170, mean = 176.5, sd = 7.30)
+# Proportion of 19-year-old females <170 cm
+pnorm(170, mean = 163.2, sd = 6.54)
 
 ```
 
