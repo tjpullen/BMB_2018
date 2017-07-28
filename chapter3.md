@@ -309,11 +309,11 @@ What proportion of 19-year-old females would you expect to be under 170 cm tall?
 ```{r}
 mean = 163.2
 sd = 6.54
-lb = 150
+lb = 130
 ub = 170
-x <- seq(150, 205, length.out = 1000)
+x <- seq(130, 200, length.out = 1000)
 hx <- dnorm(x, mean = mean, sd = sd)
-plot(x, hx, type = "n", xlab = "Height (cm)", ylab = "Probability", main = "Male Height at 19 years")
+plot(x, hx, type = "n", xlab = "Height (cm)", ylab = "Probability", main = "Female Height at 19 years")
 i <- x >= lb & x <= ub
 lines(x, hx)
 polygon(c(min(x[i]), x[i], max(x[i])), c(0, hx[i], 0), col = "red")
@@ -337,3 +337,13 @@ pnorm(170, mean = 163.2, sd = 6.54)
 ```{r}
 test_function("pnorm", args = c("q", "mean", "sd"))
 ```
+
+
+
+
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:fafb75e499
+## Summary
+
+*** =video_link
+//player.vimeo.com/video/227419546
