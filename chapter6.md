@@ -39,7 +39,7 @@ Since you would expect speed to influence stopping distance, speed is the explan
 In R, you use the `~` symbol to denote 'is explained by'. So `cars$dist ~ cars$speed` means 'is the stopping distance explained by speed?'
 
 *** =instructions
-Plot a scatter plot to see to what extent `cars$dist` is explained by `cars$speed` using the `plot()` command.
+Generate a scatter plot showing the extent to which `cars$dist` is explained by `cars$speed` using the `plot()` command.
 *** =hint
 
 *** =pre_exercise_code
@@ -68,14 +68,22 @@ test_function("plot", args = "x")
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:16406d9a7c
-## <<<New Exercise>>>
+## Visual assessment of association
 
-Now you've generated the scatter plot, take a closer look at it. (If it's too small you can drag the boundaries to stretch it).
+Now you've generated the scatter plot, take a closer look at it. (If it's too small you can drag the boundaries to expand it).
 
+Scatter plots give a good visual indication of the relationship (or lack of one) between two variables. Consider the following questions:
 
+- Is there a clear association between `dist` and `speed`?
+- If so, does the relationship appear linear (ie. the shape of a straight line) or non-linear?
+- Is the relationship positive (increased `speed` is associated with increased `dist`) or negative?
 
+Pick the best description of the relationship between `speed` and `dist`.
 *** =instructions
-
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
 *** =hint
 
 *** =pre_exercise_code
@@ -85,5 +93,5 @@ plot(cars$dist ~ cars$speed)
 
 *** =sct
 ```{r}
-
+test_mc(correct = 2)
 ```
