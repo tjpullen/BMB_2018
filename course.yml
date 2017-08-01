@@ -1,6 +1,8 @@
-title            : BMB 2018
-description      : Online element of the BMB STAT course. 
-university       : Imperial College London
-difficulty_level : 2
+title: BMB 2018
+description: Online element of the BMB STAT course.
+university: Imperial College London
+difficulty_level: 2
 programming_language: r
-time_needed      : 1 hour
+time_needed: 1 hour
+datasets:
+  STAT8.Rdata: Stat8
