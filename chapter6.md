@@ -321,7 +321,7 @@ Use the `lm()` function to describe the relationship between 'dist' and 'speed' 
 *** =solution
 ```{r}
 # Linear regression on `dist` against `speed` from `cars`
-lm(dist ~ speed, ddata = cars)
+lm(dist ~ speed, data = cars)
 ```
 
 *** =sct
