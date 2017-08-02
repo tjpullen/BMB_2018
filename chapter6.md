@@ -64,8 +64,8 @@ plot(dist ~ speed, data = cars)
 
 *** =sct
 ```{r}
-test_function("plot", args = "x")
-
+# test_function("plot", args = c("formula", "data"))
+test_function("plot")
 ```
 
 
@@ -129,7 +129,7 @@ plot(b ~ a, data = data)
 
 *** =sct
 ```{r}
-test_function('plot', args = c('x', 'data))
+test_function('plot', args = c('formula', 'data))
 ```
 
 
@@ -299,7 +299,7 @@ test_mc(correct = 2)
 --- type:NormalExercise lang:r xp:100 skills:1 key:70238af6b2
 ## Linear regression
 
-While correlation indicates the strength and direction of an association, you may need to define the relationship in more detail. Linear regression fits a straight line to the relationship which allows us to predict the response variable from the explanatory variable.
+While correlation indicates the strength and direction of an association, you may need to define the relationship in more detail. Linear regression fits a straight line to the relationship which then allows us to predict the response variable from the explanatory variable.
 
 The `lm()` function performs linear regression and you enter data in the same format you used for scatter plots.
 
@@ -326,5 +326,6 @@ lm(dist ~ speed, data = cars)
 
 *** =sct
 ```{r}
-test_function("lm", args = c("x", "data"))
+test_function("lm", args = c("formula", "data"))
 ```
+
