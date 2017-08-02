@@ -329,3 +329,125 @@ lm(dist ~ speed, data = cars)
 test_function("lm", args = c("formula", "data"))
 ```
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9411f0e035
+## Linear regression (2)
+
+Type `lm(dist ~ speed, data = cars)` into the console and look at the output.
+
+The general formula for a line is: $$y = ax + b$$
+Where
+
+- $a$ is the slope
+- $b$ is the intercept
+- $x$ is the explanatory variable
+- $y$ is the response variable
+
+You should be familiar with the formula of a straight line. Take a look at the output and see if you can work out what the slope of the line is.
+
+*** =instructions
+- -17.579
+- 3.932
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+lm(dist ~ speed, data = cars)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:44b471e84d
+## Linear Regression (3)
+
+You can use the output of `lm()` for a variety of purposes.
+
+Firstly, let's use it to plot the fitted line on a scatter plot. You can do this by saving the output of `lm()` to an object, then use this object as the argument in the `abline()` function (which draws a straight line over a plot).
+
+*** =instructions
+- Generate a scatter plot of `dist` against `speed` from `cars`.
+- Use the `lm()` function on `dist` and `speed` and direct the output to an object called `fit`
+- Use the `abline()` function to draw the line determined by `fit`
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Generate a scatter plot of dist against speed from cars
+
+
+# Store the output of lm() on dist and speed in fit
+fit <- 
+
+# Add the fitted line to the scatter plot
+
+
+```
+
+*** =solution
+```{r}
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+```
+
+*** =sct
+```{r}
+test_function("plot", args = c("formula", "data"))
+test_function("lm", args = c("formula", "data"))
+test_function("abline", args = "a")
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c31076e0c5
+## Linear Regression Output
+
+
+*** =instructions
+Use the `summary()` function to give a detailed output of `fit`
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Summary of fit
+
+
+```
+
+*** =solution
+```{r}
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Summary of fit
+summary(fit)
+
+```
+
+*** =sct
+```{r}
+test_function("summary", args = "object")
+```
