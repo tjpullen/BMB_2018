@@ -101,9 +101,11 @@ test_mc(correct = 2)
 --- type:NormalExercise lang:r xp:100 skills:1 key:e7eae34d07
 ## Visual assessment of association (2)
 
-Great! The positive linear relationship was fairly clear to spot. For the rest of the chapter we'll use a dataframe called `data`. This contains a number of continous variables in separate columns, and you'll investigate whether each of them is associated with column `a`.
+Great! The positive linear relationship was fairly clear to spot. It shows what you probably suspected, that as the speed increases, the distance required to stop a car also increases.
 
-Let's start by seeing if column `b` is associated with `a` with a scatter plot.
+For the rest of the chapter we'll also use a dataframe called `data`. This contains five continous variables in separate columns (labelled `a` to `e`), and you'll investigate whether each of them is associated with column `a`.
+
+Let's start by seeing if the data in column `b` is associated with `a` with a scatter plot.
 
 *** =instructions
 Plot `b` against `a` from dataframe `data` using the plot() function. (ie. `b` explained by `a`).
@@ -225,17 +227,54 @@ plot(e ~ a, data = data)
 test_mc(correct = 3)
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:c373d5a45c
+## A shortcut for scatter plots
+
+If you want to draw scatter plots between several columns of a dataframe, the `pairs()` function is handy.
+
+You just enter the name of the dataframe as the argument for this function and it returns a scatterplot for each pair of columns.
+
+Try it with `data`.
+
+*** =instructions
+Draw scatter plots between each column of `data` using the `pairs()` function.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Pairwise scatter plots of data
+
+
+```
+
+*** =solution
+```{r}
+# Pairwise scatter plots of data
+pairs(data)
+
+
+```
+
+*** =sct
+```{r}
+test_function("pairs", args = "x")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:72c39a1ab0
 ## Correlation
 
 Visually inspecting a scatter plot gives a good indication of the association between two variables. However, you will often need to quantify this.
 
-Correlation indicates:
+Correlation gives a measure of:
 
 - the strength of an association 
 - the direction of the relationship
  
-The 'cor()` function gives the correlation coefficient for two variables. Actually, if you give it a dataframe, it'll return the correlation coefficient between every possible pair of columns.
+The `cor()` function gives the correlation coefficient for two variables. Actually, if you give it a dataframe, it'll return the correlation coefficient between every possible pair of columns.
 
 *** =instructions
 Use the `cor()` function to return the correlation between all pairs of columns in `data`.
@@ -343,7 +382,7 @@ Where
 - $x$ is the explanatory variable
 - $y$ is the response variable
 
-You should be familiar with the formula of a straight line. Take a look at the output and see if you can work out what the slope of the line is.
+You should be familiar with the formula of a straight line from school maths. Take a look at the output and see if you can work out what the slope of the line is.
 
 *** =instructions
 - -17.579
@@ -414,6 +453,62 @@ test_function("abline", args = "a")
 ```
 
 
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d6dd0aa65
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:VideoExercise lang:r xp:50 skills:1 key:76ab416d66
+## Fitted values and residuals
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a93eb24885
+## Fitted values and residuals (2)
+
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c31076e0c5
 ## Linear Regression Output
 
