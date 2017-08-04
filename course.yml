@@ -5,4 +5,5 @@ difficulty_level: 2
 programming_language: r
 time_needed: 1 hour
 datasets:
+  STAT8v2.rdata: Stat8v2
   STAT8.rdata: Stat8
