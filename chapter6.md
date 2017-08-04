@@ -113,7 +113,7 @@ Plot `b` against `a` from dataframe `data` using the plot() function. (ie. `b` e
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata))
 
 ```
 
