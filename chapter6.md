@@ -652,11 +652,13 @@ test_mc(correct = 1)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ec14906601
-## 
+## Residuals plot (2)
 
+Let's go back to the `data` you looked at previously. Perform linear regression on `c` against `a` then plot the residuals against the fitted valules.
 
 *** =instructions
-
+- Perform linear regression on `c` against `a` from `data` and store the output in `fit`.
+- Plot the residuals against fitted values.
 *** =hint
 
 *** =pre_exercise_code
@@ -686,7 +688,7 @@ plot(fit$residuals ~ fit$fitted.values)
 
 *** =sct
 ```{r}
-test_function("fit", args = c("formula", "data"))
+test_function("lm", args = c("formula", "data"))
 test_function("plot", args = "formula")
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:677f611c28
@@ -700,7 +702,12 @@ test_function("plot", args = "formula")
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+# Linear regression on c ~ a in data stored in fit
+fit <- lm(c ~ a, data = data)
 
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+abline(h = 0, col = "red")
 ```
 
 *** =sct
