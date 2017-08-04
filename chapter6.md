@@ -725,9 +725,13 @@ test_mc(correct = 4)
 
 Take a look a `c` plotted against `a` and compare that to the residuals plot on the right.
 
+Both of these plots show that the data form a curved shape so a straight line doesn't fit the data well.
+
+Can you see the relationship between the first plot and residuals plot?
 
 *** =instructions
-
+- yes
+- no
 *** =hint
 
 *** =pre_exercise_code
@@ -748,5 +752,5 @@ abline(h = 0, col = "red")
 
 *** =sct
 ```{r}
-
+test_mc(correct = 1)
 ```
