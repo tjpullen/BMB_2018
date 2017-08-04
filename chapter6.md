@@ -456,7 +456,11 @@ test_function("abline", args = "a")
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d6dd0aa65
-## <<<New Exercise>>>
+## Linear Regression (4)
+
+Take a look at the plot. Do you think the line is a good fit through the points?
+
+In a good fit, the line should go through the middle of the points and the point should
 
 
 *** =instructions
@@ -465,7 +469,14 @@ test_function("abline", args = "a")
 
 *** =pre_exercise_code
 ```{r}
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
 
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
 ```
 
 *** =sct
@@ -477,7 +488,7 @@ test_function("abline", args = "a")
 
 
 *** =video_link
-//player.vimeo.com/video/154783078
+//player.vimeo.com/video/228184212
 
 
 
