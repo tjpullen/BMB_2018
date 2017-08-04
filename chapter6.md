@@ -587,37 +587,12 @@ While the R-squared value gives a measure of 'goodness-of-fit', it does have som
 
 Even if the line is a good fit for the data, a large amount of variation either side of the line will produce a low R-squared.
 
-Conversely, a high R-squared value isn't always an indication of a good fit because it does not detect
+Conversely, a high R-squared value isn't always an indication of a good fit because it does not detect consistent differences from the fitted line. You can see these differences by plotting the residuals against the fitted values.
+
+Note: you can access the residuals and fitted values of the `fit` object with `fit$residuals` and `fit$fitted.values`.
 
 *** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:c31076e0c5
-## Linear Regression Output
-
-
-*** =instructions
-Use the `summary()` function to give a detailed output of `fit`
+Plot the residuals against fitted values for this fit.
 *** =hint
 
 *** =pre_exercise_code
@@ -630,8 +605,7 @@ Use the `summary()` function to give a detailed output of `fit`
 # Store the output of lm() on dist and speed in fit
 fit <- lm(dist ~ speed, data = cars)
 
-# Summary of fit
-
+# Plot residuals against fitted values
 
 ```
 
@@ -640,12 +614,87 @@ fit <- lm(dist ~ speed, data = cars)
 # Store the output of lm() on dist and speed in fit
 fit <- lm(dist ~ speed, data = cars)
 
-# Summary of fit
-summary(fit)
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+```
+
+*** =sct
+```{r}
+test_function("plot", args = "formula")
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2d5d9caa69
+## Residuals plot
+
+Take a look at the residuals plot. With a good fit, you should see a random distribution of points around the line. If you see a consistent pattern, it indicates that there is a consistent difference between the fitted line and the data and that a different shape of line needs to be fitted.
+
+Does this plot indicate a good fit?
+
+*** =instructions
+- yes
+- no
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+
+abline(v = 0, col = 'red')
+```
+
+*** =sct
+```{r}
+test_mc(correct = 1)
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:ec14906601
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+```
+
+*** =sample_code
+```{r}
+# 
+```
+
+*** =solution
+```{r}
 
 ```
 
 *** =sct
 ```{r}
-test_function("summary", args = "object")
+
+```
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:677f611c28
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+
+```
+
+*** =sct
+```{r}
+
 ```
