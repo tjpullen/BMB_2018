@@ -131,7 +131,7 @@ plot(b ~ a, data = data)
 
 *** =sct
 ```{r}
-test_function('plot', args = c('formula', 'data))
+test_function('plot', args = c('formula', 'data'))
 ```
 
 
@@ -201,7 +201,7 @@ plot(d ~ a, data = data)
 
 *** =sct
 ```{r}
-test_mc(correct = 2)
+test_mc(correct = 3)
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1e2307476a
@@ -224,7 +224,7 @@ plot(e ~ a, data = data)
 
 *** =sct
 ```{r}
-test_mc(correct = 3)
+test_mc(correct = 2)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c373d5a45c
@@ -338,7 +338,7 @@ test_mc(correct = 2)
 --- type:NormalExercise lang:r xp:100 skills:1 key:70238af6b2
 ## Linear regression
 
-While correlation indicates the strength and direction of an association, you may need to define the relationship in more detail. Linear regression fits a straight line to the relationship which then allows us to predict the response variable from the explanatory variable.
+While correlation indicates the strength and direction of an association, you may need to define the relationship in more detail. Linear regression fits a straight line to the relationship which then allows you to predict the response variable from the explanatory variable.
 
 The `lm()` function performs linear regression and you enter data in the same format you used for scatter plots.
 
@@ -374,7 +374,7 @@ test_function("lm", args = c("formula", "data"))
 
 Type `lm(dist ~ speed, data = cars)` into the console and look at the output.
 
-The general formula for a line is: $$y = ax + b$$
+The general formula for a straight line is: $$y = ax + b$$
 Where
 
 - $a$ is the slope
@@ -452,19 +452,18 @@ test_function("abline", args = "a")
 
 ```
 
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d6dd0aa65
 ## Linear Regression (4)
 
 Take a look at the plot. Do you think the line is a good fit through the points?
 
-In a good fit, the line should go through the middle of the points and the point should
+In a good fit, the line should go through the middle of the points. The points should be evenly spread either side of the line with no consistent pattern.
 
+Do you think that the line is a good fit to the data in `cars`?
 
 *** =instructions
-
+- yes
+- no
 *** =hint
 
 *** =pre_exercise_code
@@ -481,7 +480,96 @@ abline(fit)
 
 *** =sct
 ```{r}
+test_mc(correct = 1)
+```
 
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7eb5a01285
+## Linear regression output
+
+You can get a more detailed output of the linear regression with the `summary()` function.
+
+You stored the output of the `lm()` function in an object called `fit`.
+
+Now run the `summary()` on `fit` and take a look at the output.
+
+*** =instructions
+Summarise `fit` with the `summary()` function.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+# Summarise fit
+
+```
+
+*** =solution
+```{r}
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+# Summarise fit
+summary(fit)
+```
+
+*** =sct
+```{r}
+test_function("summary", args = "object")
+```
+
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0e6cbc92d3
+## Linear regression output (2)
+
+Type `summary(fit)` into the console again and take a look at the output.
+
+The output contains a lot of detail which isn't all important right now.
+
+The *Coefficients:* section gives the intercept and slope, but also gives a probability that they're not zero along with stars to indicate significance.
+
+Near the bottom, look for the *adjusted R-squared value*. This gives a measure of how close to the line the data are. It has a scale of 0 - 1, with 1 indicating that all the points fall exacly on the line.
+
+What is the adjusted R-squared value for this fit?
+
+*** =instructions
+- 0.0123
+- 15.38
+- 0.6511
+- 0.6438
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 4)
 ```
 --- type:VideoExercise lang:r xp:50 skills:1 key:76ab416d66
 ## Fitted values and residuals
@@ -495,7 +583,11 @@ abline(fit)
 --- type:NormalExercise lang:r xp:100 skills:1 key:a93eb24885
 ## Fitted values and residuals (2)
 
+While the R-squared value gives a measure of 'goodness-of-fit', it does have some limitations.
 
+Even if the line is a good fit for the data, a large amount of variation either side of the line will produce a low R-squared.
+
+Conversely, a high R-squared value isn't always an indication of a good fit because it does not detect
 
 *** =instructions
 
