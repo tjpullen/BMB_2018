@@ -113,7 +113,7 @@ Plot `b` against `a` from dataframe `data` using the plot() function. (ie. `b` e
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 
 ```
 
@@ -149,7 +149,7 @@ Now take a look at the plot of `b` against `a` and choose which description of t
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 plot(b ~ a, data = data)
 ```
 
@@ -172,7 +172,7 @@ Look at the plot of `c ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 plot(c ~ a, data = data)
 ```
 
@@ -195,7 +195,7 @@ Look at the plot of `d ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 plot(d ~ a, data = data)
 ```
 
@@ -218,7 +218,7 @@ Look at the plot of `e ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 plot(e ~ a, data = data)
 ```
 
@@ -242,7 +242,7 @@ Draw scatter plots between each column of `data` using the `pairs()` function.
 
 *** =pre_exercise_code
 ```{r}
-
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 ```
 
 *** =sample_code
@@ -282,7 +282,7 @@ Use the `cor()` function to return the correlation between all pairs of columns 
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 ```
 
 *** =sample_code
@@ -320,7 +320,7 @@ Which type of relationship gives the highest correlation coefficient?
 
 *** =pre_exercise_code
 ```{r}
-load(url(http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8.Rdata))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
 par(mfrow = c(2,2))
 plot(b ~ a, data = data)
 plot(c ~ a, data = data)
