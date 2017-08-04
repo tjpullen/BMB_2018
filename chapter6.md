@@ -692,7 +692,38 @@ test_function("lm", args = c("formula", "data"))
 test_function("plot", args = "formula")
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:677f611c28
-## <<<New Exercise>>>
+## Residuals plot (3)
+
+Now take a look at the residuals plot. Do you notice a pattern to the residuals or are they randomly distributed around the horizontal line (y = 0)?
+
+*** =instructions
+- randomly distributed
+- below the line on left above line on right
+- above the line on left below line on right
+- above the line in the middle below the line either end
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+# Linear regression on c ~ a in data stored in fit
+fit <- lm(c ~ a, data = data)
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+abline(h = 0, col = "red")
+```
+
+*** =sct
+```{r}
+test_mc(correct = 4)
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:04fcebd99a
+## Residuals plot (4)
+
+Take a look a `c` plotted against `a` and compare that to the residuals plot on the right.
 
 
 *** =instructions
@@ -702,8 +733,13 @@ test_function("plot", args = "formula")
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+par(mfrow = c(1,2))
+
+plot(c ~ a, data = data)
+
 # Linear regression on c ~ a in data stored in fit
 fit <- lm(c ~ a, data = data)
+abline(fit, col = "red")
 
 # Plot residuals against fitted values
 plot(fit$residuals ~ fit$fitted.values)
