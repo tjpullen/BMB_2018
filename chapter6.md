@@ -626,7 +626,7 @@ test_function("plot", args = "formula")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2d5d9caa69
 ## Residuals plot
 
-Take a look at the residuals plot. With a good fit, you should see a random distribution of points around the line. If you see a consistent pattern, it indicates that there is a consistent difference between the fitted line and the data and that a different shape of line needs to be fitted.
+Take a look at the residuals plot. With a good fit, you should see a random distribution of points either side of the line. If you see a consistent pattern, it indicates that there is a consistent difference between the fitted line and the data and that the wrong shape of line is fitted.
 
 Does this plot indicate a good fit?
 
@@ -651,10 +651,8 @@ abline(v = 0, col = 'red')
 test_mc(correct = 1)
 ```
 
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:ec14906601
-## <<<New Exercise>>>
+## 
 
 
 *** =instructions
@@ -668,17 +666,28 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/dat
 
 *** =sample_code
 ```{r}
-# 
+# Linear regression on c ~ a in data stored in fit
+
+
+# Plot residuals against fitted values
+
+
 ```
 
 *** =solution
 ```{r}
+# Linear regression on c ~ a in data stored in fit
+fit <- lm(c ~ a, data = data)
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("fit", args = c("formula", "data"))
+test_function("plot", args = "formula")
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:677f611c28
 ## <<<New Exercise>>>
