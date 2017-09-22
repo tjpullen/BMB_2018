@@ -123,7 +123,7 @@ test_function("boxplot", args = c("formula", "data"))
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:7706d7aba9
 ## Two sample t test (2)
 
-Take a look at the boxplot.
+Take a look at the boxplot (resize the panel if necessary).
 
 Does it look like the drug-treated mice have lost weight compared to the control mice?
 *** =instructions
@@ -399,7 +399,9 @@ plot(output ~ as.numeric(day), data = data2, col = treatment)
 
 *** =sct
 ```{r}
-test_function('plot', args = c('formula', 'data', 'col'))
+test_function("plot", args = c("formula", "data"))
+# test_function("plot", args = "col")
+test_error()
 ```
 
 
@@ -407,12 +409,15 @@ test_function('plot', args = c('formula', 'data', 'col'))
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dee54eda39
 ## Dealing with variation between replicates (5)
 
-Look at the scatter plot and interpret what the data shows.
+Look at the scatter plot and interpret what the data show.
 
 Note: Black = control and Red = siRNA
 
 *** =instructions
-- 
+- Output is consistently higher in siRNA group
+- Output is consistently higher in control group
+- No consistent difference between siRNA  control groups
+
 *** =hint
 
 *** =pre_exercise_code
@@ -424,14 +429,14 @@ plot(output ~ as.numeric(day), data = data2, col = treatment)
 
 *** =sct
 ```{r}
-
+test_mc(correct = 1)
 ```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1dd88f988a
-## Paired t test (4)
+## Paired t test
 
-
+Although the expression level in the control group varies considerably between replicates, the siRNA treatment appears to have a consistent effect on expression. The trouble with the two sample t test is that it compares the *mean* of each group. In this case, the variation between replicates swamps the siRNA effect.
 
 
 *** =instructions
