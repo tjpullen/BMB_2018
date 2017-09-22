@@ -2,7 +2,11 @@
 title       : Hypothesis Testing 2
 description : Hypothesis testing in more detail
 
---- type:NormalExercise lang:r xp:100 skills:1 key:509c602d6a
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b1eb285d60
 ## One sample t test
 
 The **one sample t test** compares the mean of one sample to a particular value.
@@ -48,7 +52,8 @@ test_function("t.test", args = c("x", "mu"))
 ```
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:68cff58e3f
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f15bb8f875
 ## One sample t test (2)
 
 Perform the t test again to compare `heights` to a population mean of 163.15.
@@ -91,7 +96,7 @@ Tip: Remember to use the `~` symbol in your formula for the boxplot.
 The `~` symbol means, 'is explained by' or 'described by'. So you want to plot `weight` described by `treatment`. You also need to tell boxplot that the data is stored in `data1`.
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_1.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
 ```
 
 *** =sample_code
@@ -128,7 +133,7 @@ Does it look like the drug-treated mice have lost weight compared to the control
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_1.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
 boxplot(weight ~ treatment, data = data1)
 ```
 
@@ -148,7 +153,7 @@ Perform a two sample t test to compare the weights grouped by treatment option.
 Since you are entering the same data in `t.test()` and `boxplot()` you can use exactly the same formula.
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_1.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
 boxplot(weight ~ treatment, data = data1)
 ```
 
@@ -196,7 +201,7 @@ This time with a threshold of $\alpha = 0.01$ do you reject the null hypothesis?
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_1.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
 # boxplot(weight ~ treatment, data = data1)
 ```
 
@@ -208,38 +213,43 @@ test_mc(correct = 2)
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:028ac3286c
-## Paired t test
+## Dealing with variation between replicates
 
-You have a dataframe `data2` from an siRNA knockdown experiment. In this experiment, a cell line was transfected with either an siRNA targetting a gene of interest (gene A) or control siRNA. The expression level of gene B was measured and is in the `output` column. 6 replicates were performed on different days. Take a look at the data to see if knocking down gene A has an effect on the expression level of gene B.
+Statistics can be used to distinguish an effect which is masked by random variation - in other words, to detect a signal over the background noise.
+
+The dataframe `data2`, contains the results of an siRNA knockdown experiment. In this experiment, a cell line was transfected with either an siRNA targetting a gene of interest (gene A) or control siRNA. The expression level of gene B was measured and is in the `output` column. 6 replicates were performed on different days. Take a look at the data to see if knocking down gene A has an effect on the expression level of gene B.
 
 *** =instructions
-Plot a boxplot for the `output` column grouped by `day` for the data in `data2`.
+Plot a boxplot for the `output` column grouped by `treatment` for the data in `data2`.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_2.RData")
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
 ```
 
 *** =sample_code
 ```{r}
+# Boxplot of output grouped by treatment
 
 ```
 
 *** =solution
 ```{r}
+# Boxplot of output grouped by day
+boxplot(output ~ treatment, data = data2)
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("boxplot", args = c("formula", "data"))
 ```
 
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4fb9825166
-## Paired t test (2)
+## Dealing with variation between replicates (2)
 
 Take a look at the boxplot you just plotted.
 
@@ -248,87 +258,180 @@ Does it look like the siRNA has an effect on expression of gene B?
 *** =instructions
 - Yes, a large effect
 - Yes, a small but clear effect
+- Possibly, a small effect
 - No, no clear effect
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_2.RData")
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
+boxplot(output ~ treatment, data = data2)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 3)
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c1998ab6d2
+## Dealing with variation between replicates (3)
+
+It looks like there may be an effect, but the effect is small relative to the dispersion of the data.
+
+Perform a two sample t test to determine the likelihood of observing a result like this if there were no effect.
+*** =instructions
+Perform a two sample t test on `output` grouped by `treatment` from `data2`.
+
+Look at the output, and note down the *p value*.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
+```
+
+*** =sample_code
+```{r}
+# t test on output grouped by treatment
+
+```
+
+*** =solution
+```{r}
+# t test on output grouped by treatment
+t.test(output ~ treatment, data = data2)
+
+```
+
+*** =sct
+```{r}
+test_function("t.test", args = c("formula", "data"))
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:acf3acd269
+## Dealing with variation between replicates (4)
+
+With $\alpha = 0.05$ do you reject the null hypothesis?
+*** =instructions
+- Yes
+- No
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
 ```
 
 *** =sct
 ```{r}
 test_mc(correct = 2)
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:77c5375f09
-## Paired t test (3)
+## Looking at the data more closely
+
+You failed to reject the null hypothsis, but let's take a closer look at the data.
 
 The trouble with boxplots is that they don't show the individual data points. By looking at the raw data, you may see a pattern that isn't apparent from summary statistics.
 
-You can use the `plot()` function to plot individual data points. However, if the grouping variable is a factor, it will default to plotting a box plot. If you tell it to treat `treatment` as a numeric variable using `as.numeric(treatment)`, it will plot a scatter plot.
+You can use the `plot()` function to plot individual data points grouped by `day` to see how much variation there was between replicates. However, if the grouping variable is a factor, R will produce a box plot. If you tell it to treat `day` as a numeric variable using `as.numeric(day)`, it will plot a scatter plot.
 
 *** =instructions
-Plot a scatter plot of `output` grouped by `treatment` from `data2`
+Plot a scatter plot of `output` grouped by `day` from `data2`
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
 ```
 
 *** =sample_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_2.RData")
+# Scatter plot of output grouped by day
+
 ```
 
 *** =solution
 ```{r}
+# Scatter plot of output grouped by day
+plot(output ~ as.numeric(day), data = data2)
+```
 
+*** =sct
+```{r}
+test_function("plot", args = c("formula", "data"))
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:660cefb3bd
+## Looking at the data (even) more closely
+
+That's great, but it would be helpful to know which datapoint refers to which treatment.
+
+You can easily do this by colouring the data points with the `col =` argument.
+
+
+*** =instructions
+Add in the `col = ` argument to colour the datapoints by `treatment`.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
+```
+
+*** =sample_code
+```{r}
+# Scatter plot of output grouped by day and coloured by treatment
+plot(output ~ as.numeric(day), data = data2)
+```
+
+*** =solution
+```{r}
+# Scatter plot of output grouped by day and coloured by treatment
+plot(output ~ as.numeric(day), data = data2, col = treatment)
+
+```
+
+*** =sct
+```{r}
+test_function('plot', args = c('formula', 'data', 'col'))
+```
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dee54eda39
+## Dealing with variation between replicates (5)
+
+Look at the scatter plot and interpret what the data shows.
+
+Note: Black = control and Red = siRNA
+
+*** =instructions
+- 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
+# Scatter plot of output grouped by day and coloured by treatment
+plot(output ~ as.numeric(day), data = data2, col = treatment)
 ```
 
 *** =sct
 ```{r}
 
 ```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:e814c7095b
-## Paired t test (4)
-
-That's great, but what we really want to see was whether there are big differences between the replicates performed on different days.
-
-To see this, we can colour the points by day. To do this, you just add the `col =` argument (short for colour). You want it to colour the points according to the `day` column.
-
-*** =instructions
-Plot a scatter plot of `output` grouped by `treatment` from `data2` with the data points coloured according to `day`
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/datasets/STAT5_2.RData")
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1dd88f988a
 ## Paired t test (4)
 
-** Content not found **
+
 
 
 *** =instructions
@@ -366,7 +469,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1a4c22d00a
 ## Assumptions of the t test (1)
 
-** Content not found **
+
 
 *** =instructions
 
@@ -386,7 +489,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:NormalExercise lang:r xp:100 skills:1 key:cd73744d94
 ## Assumptions of the t test (2)
 
-** Content not found **
+
 
 
 *** =instructions
@@ -416,7 +519,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:NormalExercise lang:r xp:100 skills:1 key:e1591a53fc
 ## Assumptions of the t test (3)
 
-** Content not found **
+
 
 *** =instructions
 
@@ -454,7 +557,6 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:c166f5d1c6
 ## Statistical power (2)
 
-** Content not found **
 
 
 *** =instructions
@@ -532,7 +634,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d5572f407
 ## Multiple testing 2
 
-** Content not found **
+
 
 
 *** =instructions
@@ -563,7 +665,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5357/dat
 --- type:NormalExercise lang:r xp:100 skills:1 key:10f7d807d3
 ## Multiple testing (3)
 
-** Content not found **
+
 
 
 *** =instructions
