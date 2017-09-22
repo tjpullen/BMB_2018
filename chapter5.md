@@ -11,7 +11,7 @@ description : Hypothesis testing in more detail
 
 The **one sample t test** compares the mean of one sample to a particular value.
 
-**Eample: Are our students taller than average?**
+**Example: Are our students taller than average?**
 
 The mean height of 19 year-old females in the WHO reference data is 163.1548 cm. You could use a one sample t test to compare a sample of this year's students to this mean value.
 
@@ -438,8 +438,54 @@ test_mc(correct = 1)
 
 Although the expression level in the control group varies considerably between replicates, the siRNA treatment appears to have a consistent effect on expression. The trouble with the two sample t test is that it compares the *mean* of each group. In this case, the variation between replicates swamps the siRNA effect.
 
+So how can you analyse the data so that the consistent effect is detected over the variation between replicates?
+
+The paired t test can help because, as the name suggests, it analyses the data in pairs. Try adding the argument `paired = True` to the t test to see how this affects the outcome.
+
 
 *** =instructions
+Perform a paired t test on `output` grouped by `treatment` in `data2`.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
+
+```
+
+*** =sample_code
+```{r}
+# Paired t test on output grouped by treatment
+
+```
+
+*** =solution
+```{r}
+# Paired t test on output grouped by treatment
+t.test(output ~ treatment, data = data2, paired = T)
+```
+
+*** =sct
+```{r}
+test_function("t.test", args = c("formula", "data", "paired"))
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:869ab52c54
+## Paired t test
+
+Once the background variation is controlled for, the siRNA effect now has $p < 0.00005$
+
+For the paired t test to work, the data must be arranged in the same order in each group. In this case, both the control and siRNA data are sorted by day.
+
+The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time.
+
+Which of the following would not be suitable for a paired t test:
+*** =instructions
+- Does caffeine affect reaction time? Reaction times were measured in 20 students before and after taking caffeine.
+- Does this cohort score higher marks than the last cohort? Exam scores from this year's cohort are compared to the same exam scores from last year's cohort.
+- Is there a difference between steps recorded by smartphone apps or dedicated pedometers? Over a 24 hour period, 100 students recorded their steps on both a smartphone app and a pedometer device. The results from each device were compared.
+- Have our students improved over the year? End of year exam scores of a cohort of 2nd year students were compared to their 1st year exam scores.
 
 *** =hint
 
@@ -448,19 +494,9 @@ Although the expression level in the control group varies considerably between r
 
 ```
 
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
 *** =sct
 ```{r}
-
+test_mc(correct = 2)
 ```
 --- type:VideoExercise lang:r xp:50 skills:1 key:7bc75b2e79
 ## How does the t test work?
