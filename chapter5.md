@@ -472,7 +472,7 @@ test_function("t.test", args = c("formula", "data", "paired"))
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:869ab52c54
-## Paired t test
+## Paired t test (2)
 
 Once the background variation is controlled for, the siRNA effect now has $p < 0.00005$
 
