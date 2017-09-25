@@ -478,9 +478,9 @@ Once the background variation is controlled for, the siRNA effect now has $p < 0
 
 For the paired t test to work, the data must be arranged in the same order in each group. In this case, both the control and siRNA data are sorted by day.
 
-The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time.
+The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time. There needs to be some reason why an observation in one group is more closely related to one particular observation, than the other observations in the second group.
 
-Which of the following would not be suitable for a paired t test:
+Which of the following would not be suitable for anaylsis with a paired t test:
 *** =instructions
 - Does caffeine affect reaction time? Reaction times were measured in 20 students before and after taking caffeine.
 - Does this cohort score higher marks than the last cohort? Exam scores from this year's cohort are compared to the same exam scores from last year's cohort.
