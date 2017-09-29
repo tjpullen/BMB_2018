@@ -540,61 +540,83 @@ test_mc(correct = 2)
 --- type:NormalExercise lang:r xp:100 skills:1 key:cd73744d94
 ## Assumptions of the t test (2)
 
+**Assumption 2: Normal distribution**
 
+The t test assumes the underlying population has a normal distribution. Remember, that this refers to the population, rather than your sample. If your sample appears normally distributed, this is a good indication that the population is too.
 
-
+The simplest way to assess normality, is to look at a histogram of the data.
 *** =instructions
-
+Draw a histogram of the `heights` data you used for the one sample t test.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+set.seed(967)
+heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
 ```
 
 *** =sample_code
 ```{r}
+# Histogram of heights
 
 ```
 
 *** =solution
 ```{r}
-
+# Histogram of heights
+hist(heights)
 ```
 
 *** =sct
 ```{r}
-
+test_function("hist", args = "x")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e1591a53fc
 ## Assumptions of the t test (3)
 
+As you can see, the data appear to follow a roughly normal distribution, with most values clustered around the mean and fairly symmetrical tails.
 
+A normal quantile-quantile plot (Q-Q plot) is slightly more complicated but gives a clearer indication. This compares the quantiles (another name for percentiles) of your data with the theoretical quantiles from a normal distribution.
+
+If that sounds like gobbledygook, don't worry. All you have to do, is see how well the data fall along a straight line.
 
 *** =instructions
-
+Use the `qqnorm()` and `qqline()` functions to test whether the `heights` data appear normally distributed.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+set.seed(967)
+heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
+hist(heights)
 ```
 
 *** =sample_code
 ```{r}
+# Normal Q-Q plot of heights
+
+
+# Add line to Q-Q plot of heights
 
 ```
 
 *** =solution
 ```{r}
+# Normal Q-Q plot of heights
+qqnorm(heights)
+
+# Add line to Q-Q plot of heights
+qqline(heights)
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("qqnorm", args = "x")
+test_function("qqline", args = "x")
 ```
+
 
 
 --- type:VideoExercise lang:r xp:50 skills:1 key:ceda018afc
