@@ -480,7 +480,7 @@ For the paired t test to work, the data must be arranged in the same order in ea
 
 The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time. There needs to be some reason why an observation in one group is more closely related to one particular observation, than the other observations in the second group.
 
-Which of the following would not be suitable for anaylsis with a paired t test:
+Which of the following would not be suitable for analysis with a paired t test:
 *** =instructions
 - Does caffeine affect reaction time? Reaction times were measured in 20 students before and after taking caffeine.
 - Does this cohort score higher marks than the last cohort? Exam scores from this year's cohort are compared to the same exam scores from last year's cohort.
@@ -510,10 +510,20 @@ test_mc(correct = 2)
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1a4c22d00a
 ## Assumptions of the t test (1)
 
+Hypothesis tests are based on certain assumptions about the data. If the data do not fit these assumptions, the probability calculations underlying the test are likely to be incorrect. This could increase the chance of false positive or false negative results with potentially serious consequences.
 
+So it is important to check the assumptions of any test you perform.
 
+**Assumption 1: Continuous independent variable and bivariate dependent variable**
+
+That's a bit of a mouthful, but it simply means that the outcome variable needs to be continuous, and the experimental variable needs to be categorical. Because the t test can only compare two groups, there can only have two levels for the dependent variable - that's what bivariate means. The underlying data may have more than two levels, but you can only analyse them two at a time with a t test.
+
+Which of the following analyses fulfils this first assumption:
 *** =instructions
-
+- Testing whether the genotype of transgenic mice (homozygous, heterozygous or wild type for mutation A) affects the blood glucose level.
+- Testing whether diet in mice (normal diet vs 'Western' diet) affects the time spent on running on an exercise wheel.
+- Testing whether the number of eggs consumed in a month affects the blood cholesterol level.
+- Testing whether the number of eggs consumed in a month affects the probability of suffering from myocardial infarction (heart attack).
 *** =hint
 
 *** =pre_exercise_code
@@ -523,7 +533,7 @@ test_mc(correct = 2)
 
 *** =sct
 ```{r}
-
+test_mc(correct = 2)
 ```
 
 
