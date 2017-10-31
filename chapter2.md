@@ -1,5 +1,5 @@
 ---
-title       : Introducing Exploratory Data Analysis
+title       : STAT2 - Introducing Exploratory Data Analysis
 description : Taking a first look at the data
 
 
@@ -270,7 +270,7 @@ The thick line in the middle shows the median value. The box around that shows 1
 
 By definition, a quarter of the values will fall within each quartile. Approximately half of the weight values will fall within which interval:
 
-**Tip:** If the plot is too small, resize it by dragging the boundaries.
+**Tip:** If the plot is too small, resize it by dragging the boundaries. Alternatively, click the double arrow symbol in the **Plots** tab to view it in a pop-up window (you may have to allow pop-ups).
 
 *** =instructions
 - 24 - 28
