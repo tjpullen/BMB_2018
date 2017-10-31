@@ -1,5 +1,5 @@
 ---
-title       : Introducing R
+title       : STAT1 - Introducing R
 description : A first look at how to use R
 
 
@@ -38,7 +38,7 @@ What was your outcome?
 msg1 = "Try that again - make sure you type `#` at the start of the line then see if you get an answer to the calculation."
 msg2 = "Try that again, and check you've got it the right way round"
 msg3 = "Well done. `#` tells R to ignore that line - it's useful for writing comments."
-msg4 = "Try that again - carefuly type `2 + 4` and hit enter, then try `# 2 + 4` and hit enter."
+msg4 = "Try that again - carefully type `2 + 4` and hit enter, then try `# 2 + 4` and hit enter."
 test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
@@ -47,13 +47,13 @@ test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise lang:r xp:100 skills:1 key:57331075c7
 ## Simple calculations
 
-This time you'll notice there's another panel on the right. You can still try out code in the **R console** at the bottom, but this time you type your answer in the **script.R** panel at the top. When you click **Submit Answer** it'll run your script and tell you if you got it right.
+This time you'll notice there's another panel on the right. You can still try out code in the **R Console** at the bottom, but this time you type your answer in the **script.R** panel at the top. You can test your code by clicking **Run Code**, and when you're happy with it click  **Submit Answer**.
 
 Just be aware that you can use the following operators in R:
 
-`*` multiply
-`/` divide
-`^` to the power (eg. 3 squared is 3^2)
+- `*` multiply
+- `/` divide
+- `^` to the power (eg. 3 squared is 3^2)
 
 *** =instructions
 
@@ -470,13 +470,13 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:9f33ab526f
 ## Introducing functions
 
-The real power of R lies in its functions.
+The real power of R lies in its **functions**.
 
-The functions perform a particular operation on your data. They range from simple to highly complex, but they all use the same format. That is *function_name*(*argument*)
+A **function** performs a particular operation on your data. They range from simple to highly complex, but they all use the same format. That is *function_name*(*argument*)
 
 Tip: *argument* in this context just means the input for the function.
 
-Eg. `mean(e)` would return the mean (average) of the values in your vector `e`
+Eg. `mean(e)` would return the mean or average of the values in your vector `e`
 
 *** =instructions
 Calculate the mean fuel efficiency (mpg) of the `cars`.
@@ -645,7 +645,7 @@ success_msg("Before you go on, take a look at the histogram you created")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:544897a878
 ## Histograms
 
-Use the **R console** to draw that histogram of `hp` from `cars` again.
+Use the **R Console** to draw that histogram of `hp` from `cars` again.
 
 Take a look at the data and you'll notice that most of the cars have a similar power. What range of hp do most cars fall within
 
