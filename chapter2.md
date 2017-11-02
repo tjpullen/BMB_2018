@@ -534,7 +534,9 @@ So you should now store the data in that format. You do that by assigning the co
 - Display how the `sex` colum is stored after the conversion using the `class()` function.
 
 *** =hint
-Your code should start with `mice$sex <-` to assign the converted data to the sex column.
+
+Remember you use `<-` to assign some data to a variable. This works with columns as well. So your code should start with `mice$sex <-` to assign the converted data to the sex column.
+
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/mice5.rdata"))
@@ -679,7 +681,11 @@ test_mc(correct = 1)
 --- type:NormalExercise lang:r xp:100 skills:1 key:b77229794d
 ## Summary Statistics by Group
 
-Remember how you produced boxplots by group? Wouldn't it be handy to produce summary statistics by group too?
+Remember how you produced boxplots by group?
+
+You used this command to plot mouse weights grouped by genotype: `boxplot(mice$weight ~ mice$genotype)`
+
+Wouldn't it be handy to produce summary statistics by group too?
 
 The easiest way to do this is using the `describeBy()` function.
 
@@ -689,7 +695,7 @@ This function takes two arguments in the format `describeBy(a, group = b)` where
 
 *** =instructions
 
-Summarise the `weight` column from `mice` grouped by `genotype`.
+Summarise the `weight` column from `mice` grouped by `genotype` using the `describeBy` function.
 
 *** =hint
 
