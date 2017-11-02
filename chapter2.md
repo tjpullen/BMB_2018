@@ -13,7 +13,7 @@ The standard layout has each column representing a different variable (eg. heigh
 
 This differs from the layout people often use with spreadsheets where they put each condition (eg treated/untreated) in separate columns.
 
-Take a look at the `mice_1` and `mice_2` dataframes which give the weight of mice and their genotype ('WT' is wild-type and 'KO' is knock-out).
+Take a look at the `mice_1` and `mice_2` dataframes by printing them in the **R Console**. These give the weight of mice and their genotype ('WT' is wild-type and 'KO' is knock-out).
 
 Which dataframe(s) is/are in the standard layout?
 
@@ -156,6 +156,8 @@ Use the `hist()` function to plot a histogram of the `weight` column of `mice`.
 
 *** =hint
 
+Remember last week you used `hist(cars$hp)` to plot a histogram of the `hp` column of the `cars` dataframe. Can you work out how to do the same with this data?
+
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/mice5.rdata"))
@@ -182,7 +184,7 @@ test_function("hist", args = "x")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2a26719018
 ## Histograms
 
-Plot the histogram of weights again in the **R Console**, and take a closer look at it.
+Plot the histogram of weights again in the **R Console** and press enter, then take a closer look at it.
 
 This shows the weight distribution of the mice, with most mice concentrated around a peak. Most mice are close in weight to the peak value with fewer mice showing greater difference.
 
@@ -195,6 +197,8 @@ What is the approximate value of this peak?
 - 33
 - 35
 *** =hint
+
+Type the same command as you did in the previous exercise. Click the left arrow at the top to go back and have a look if you've forgotten.
 
 *** =pre_exercise_code
 ```{r}
@@ -221,6 +225,13 @@ What is the approximate shape of this distribution?
 - Right-skewed
 *** =hint
 
+If you're unclear what these terms mean, look them up in a text book or search on the internet.
+
+Briefly,
+- a flat distribution is where all outcomes are equally likely, so the distribution is a flat line.
+- a normal distribution is a symmetrical 'bell-shaped' curve.
+- a left-skewed distribution could be similar to the normal distribution but has a longer 'tail' of data points extending further to the left of the peak than the right.
+
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/mice5.rdata"))
@@ -238,6 +249,8 @@ Boxplots are way to summarise data graphically. These provide less information t
 *** =instructions
 Use the `boxplot()` function to plot the `weight` column from `mice`.
 *** =hint
+
+You enter exactly the same argument in the `boxplot()` function as you used for the `histogram()` function in the previous exercise.
 
 *** =pre_exercise_code
 ```{r}
@@ -268,7 +281,7 @@ Plot the boxplot of weights again in the **R Console**, and take a closer look a
 
 The thick line in the middle shows the median value. The box around that shows 1st and 3rd quartiles. The 'whiskers' reaching outside the box show the overall range of values.
 
-By definition, a quarter of the values will fall within each quartile. Approximately half of the weight values will fall within which interval:
+By definition, a quarter of the values will fall within each quartile. Approximately half of the weight values will fall within which interval?
 
 **Tip:** If the plot is too small, resize it by dragging the boundaries. Alternatively, click the double arrow symbol in the **Plots** tab to view it in a pop-up window (you may have to allow pop-ups).
 
@@ -298,12 +311,16 @@ As I mentioned, boxplots are useful for quickly comparing data. In this case let
 
 The `boxplot()` function can produce multiple plots if you give it a variable to group the data by. We do this in the format `boxplot(a ~ b)`, where `a` is the variable that is plotted and `b` is the variable for grouping the data.
 
+Of course if `a` and `b` are columns in dataframe `data`, you would need to include the dataframe name too: `boxplot(data$a ~ data$b)`
+
 *Tip:* Get used to the `a ~ b` format since it's widely used in statistics. More generally, the arguments to the left of the ~ are the *response* variable(s) and the *explanatory* variables.
 
 *** =instructions
 Produce a boxplot of `weight` grouped by `genotype` from the `mice` dataframe.
 
 *** =hint
+
+Remember you previously typed `boxplot(mice$weight)`. Now you need to add the grouping symbol `~` followed by the grouping variable `mice$genotype` inside the brackets.
 
 *** =pre_exercise_code
 ```{r}
@@ -512,9 +529,9 @@ So you should now store the data in that format. You do that by assigning the co
 **Note:** Use the `class()` function to display how `sex` is stored before and after the conversion.
 
 *** =instructions
-- Display how the `sex` column from `mice` is currently stored using the `class()` function 
-- Convert the `sex` column into a factor, and assign this to the `sex` column.
-- Display how the `sex` colum is stored after the conversion.
+
+- Convert the `sex` column into a factor again, but this time assign this (store it in) to the `sex` column.
+- Display how the `sex` colum is stored after the conversion using the `class()` function.
 
 *** =hint
 Your code should start with `mice$sex <-` to assign the converted data to the sex column.
@@ -526,10 +543,13 @@ mice <- mice[,c(3,1,2)]
 
 *** =sample_code
 ```{r}
-# Storage format of sex before conversion
+# Print the sex column from mice
+mice$sex
 
+# Convert the sex column from mice to a factor
+factor(mice$sex)
 
-# Assign converted values into the sex column of mice
+# Convert the sex column from mice to a factor and store in the sex column of mice
 
 
 # Storage format of sex after conversion
@@ -539,21 +559,24 @@ mice <- mice[,c(3,1,2)]
 
 *** =solution
 ```{r}
-# Storage format of sex before conversion
-class(mice$sex)
+# Print the sex column from mice
+mice$sex
 
-# Assign converted values into the sex column of mice
+# Convert the sex column from mice to a factor
+factor(mice$sex)
+
+# Convert the sex column from mice to a factor and store in the sex column of mice
 mice$sex <- factor(mice$sex)
 
 # Storage format of sex after conversion
 class(mice$sex)
 
-
 ```
 
 *** =sct
 ```{r}
-test_function("factor", args = "x")
+test_function("factor", args = "x", index = 1)
+test_function("factor", args = "x", index = 2)
 test_function("class", args = "x")
 
 ```
@@ -726,4 +749,5 @@ library(psych)
 *** =sct
 ```{r}
 test_mc(correct = 1)
+success_msg("You've completed the pre-session material for STAT2")
 ```
