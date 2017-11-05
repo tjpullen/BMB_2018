@@ -1,5 +1,5 @@
 ---
-title       : Hypothesis Testing
+title       : STAT4 - Hypothesis Testing
 description : Introducing hypothesis testing
 
 
@@ -29,10 +29,10 @@ description : Introducing hypothesis testing
 
 Which of the following do you do when $p < \alpha$ ?
 *** =instructions
-- accept the null hypothesis
+- fail to reject the null hypothesis
 - reject the alternative hypothesis
 - reject the null hypothesis
-- accept the alternative hypothesis
+- fail to reject the alternative hypothesis
 
 *** =hint
 
@@ -43,7 +43,7 @@ Which of the following do you do when $p < \alpha$ ?
 
 *** =sct
 ```{r}
-test_mc(correct = 3)
+test_mc(correct = 3, feedback_msgs = c("No. Since alpha is the threshold for $p$, we reject the null hypothesis when $p <$ alpha","No. Since alpha is the threshold for $p$, we reject the null hypothesis when $p <$ alpha","Yes. Since alpha is the threshold for $p$, we reject the null hypothesis when $p <$ alpha","No. Since alpha is the threshold for $p$, we reject the null hypothesis when $p <$ alpha"))
 ```
 
 
