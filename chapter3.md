@@ -1,5 +1,5 @@
 ---
-title       : Probability and Risk
+title       : STAT3 - Probability and Risk
 description : Understanding uncertainty
 
 
@@ -80,7 +80,7 @@ test_mc(correct = 4)
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:068f66a92b
 ## Mutually exclusive outcomes
 
-When throwing a die, which of the following are NOT mutually exclusive outcomes?
+From a single throw of a die, which of the following are NOT mutually exclusive outcomes?
 
 *** =instructions
 - 1 or 6
@@ -114,10 +114,11 @@ test_mc(correct = 5)
 Which of the following are NOT independent events?
 
 *** =instructions
-- Tossing two coins
-- option 3
-- Throwing the same die twice
-- option 4
+- The outcome of tossing two coins
+- A bag contains a mixture of blue and green balls. The outcome of drawing two balls out of the bag in turn without replacing them.
+- The outcome of tossing the same coin twice
+- The outcome of throwing the same die twice
+- A bag contains a mixture of blue and green balls. The outcome of drawing two balls out of the bag in turn replacing them between draws.
 *** =hint
 
 *** =pre_exercise_code
@@ -172,11 +173,13 @@ test_mc(correct = 1)
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:52c2118876
 ## The binomial distribution (2)
 
-Which of the following is NOT an example of a binomial distribution.
+Which of the following is NOT an example of a binomial distribution?
+
+**Tip:** If you're unsure, replay the video with the question in mind.
 
 *** =instructions
 - The likelihood of getting 2 wild-type offspring in a litter of 5 (from crossing two heterozygotes).
-- The number of coins you have to toss to get 3 heads.
+- Counting the number of times you toss a coin until you get 3 heads.
 - The proportion of '6s' you get from throwing 3 dice.
 *** =hint
 
