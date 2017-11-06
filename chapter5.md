@@ -1,5 +1,5 @@
 ---
-title       : Hypothesis Testing 2
+title       : STAT5 - Hypothesis Testing 2
 description : Hypothesis testing in more detail
 
 
@@ -476,7 +476,7 @@ test_function("t.test", args = c("formula", "data", "paired"))
 
 Once the background variation is controlled for, the siRNA effect now has $p < 0.00005$
 
-For the paired t test to work, the data must be arranged in the same order in each group. In this case, both the control and siRNA data are sorted by day.
+For the paired t test to work in R, the data must be arranged in the same order in each group. In this case, both the control and siRNA data are sorted by day.
 
 The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time. There needs to be some reason why an observation in one group is more closely related to one particular observation, than the other observations in the second group.
 
@@ -498,14 +498,6 @@ Which of the following would not be suitable for analysis with a paired t test:
 ```{r}
 test_mc(correct = 2)
 ```
---- type:VideoExercise lang:r xp:50 skills:1 key:7bc75b2e79
-## How does the t test work?
-
-
-*** =video_link
-//player.vimeo.com/video/154783078
-
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1a4c22d00a
 ## Assumptions of the t test (1)
@@ -618,52 +610,31 @@ test_function("qqline", args = "x")
 ```
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:73bcc6232e
+## Assumptions of the t test (4)
 
---- type:VideoExercise lang:r xp:50 skills:1 key:ceda018afc
-## Statistical power
+**Assumption 3: Equal variance**
 
-
-*** =video_link
-//player.vimeo.com/video/154783078
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:c166f5d1c6
-## Statistical power (2)
-
-
-
+The t test assumes that the two populations from which the two samples have been taken have equal variance. In other words, the spread or dispersion of the values should be similar. 
 *** =instructions
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:731ff43525
-## Statistical power (3)
-
-** Content not found **
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
+boxplot(weight ~ treatment, data = data1)
 ```
 
 *** =sample_code
 ```{r}
+# Boxplot of weight grouped by treatment
+boxplot(weight ~ treatment, data = data1)
+
+# t test of weight grouped by treatment - unequal variance test
+t.test(weight ~ treatment, data = data1)
+
+# t test of weight grouped by treatment - equal variance test
 
 ```
 
@@ -677,90 +648,3 @@ test_function("qqline", args = "x")
 
 ```
 
---- type:VideoExercise lang:r xp:50 skills:1 key:ddbb4c08fe
-## The problem with multiple testing
-
-
-*** =video_link
-//player.vimeo.com/video/154783078
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bd50d77fba
-## Multiple testing (2)
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:5d5572f407
-## Multiple testing 2
-
-
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:10f7d807d3
-## Multiple testing (3)
-
-
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
