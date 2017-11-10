@@ -1,5 +1,5 @@
 ---
-title       : Correlation and Regression
+title       : STAT8 - Correlation and Regression
 description : Investigating the association between two continuous variables
 
 

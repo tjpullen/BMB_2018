@@ -615,7 +615,9 @@ test_function("qqline", args = "x")
 
 **Assumption 3: Equal variance**
 
-The t test assumes that the two populations from which the two samples have been taken have equal variance. In other words, the spread or dispersion of the values should be similar. 
+The t test *usually* assumes that the two populations from which the samples have been taken have equal variance. In other words, the spread or dispersion of the values should be similar. You can check this by looking at the variance using summary statistics. (You could also check the standard deviation, since this is just the square root of the variance.)
+
+*Actually* by default R uses the Welch's t test, which does not assume equal variance. If you are confident that the variance of your two samples are equal, you can specify this with argument `var.equal = TRUE`. This will increase the power of the test a little, but is most situations there's little advantage.
 *** =instructions
 
 *** =hint
@@ -623,7 +625,7 @@ The t test assumes that the two populations from which the two samples have been
 *** =pre_exercise_code
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-boxplot(weight ~ treatment, data = data1)
+# boxplot(weight ~ treatment, data = data1)
 ```
 
 *** =sample_code
@@ -640,7 +642,14 @@ t.test(weight ~ treatment, data = data1)
 
 *** =solution
 ```{r}
+# Boxplot of weight grouped by treatment
+boxplot(weight ~ treatment, data = data1)
 
+# t test of weight grouped by treatment - unequal variance test
+t.test(weight ~ treatment, data = data1)
+
+# t test of weight grouped by treatment - equal variance test
+t.test(weight ~ treatment, data = data1)
 ```
 
 *** =sct
