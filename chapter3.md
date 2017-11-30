@@ -186,7 +186,7 @@ test_mc(correct = 2, msg1, msg2, msg3)
 
 
 *** =video_link
-//player.vimeo.com/video/227401923
+//player.vimeo.com/video/245182591
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:29adcc84b0
@@ -231,7 +231,7 @@ test_function("dbinom", args = c("x", "size", "prob"))
 
 
 *** =video_link
-//player.vimeo.com/video/227403950
+//player.vimeo.com/video/245182681
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:bf295d9c99
 ## Binomial calculations (2)
@@ -276,7 +276,7 @@ test_function("pbinom", args = c("q", "size", "prob"))
 
 
 *** =video_link
-//player.vimeo.com/video/227410811
+//player.vimeo.com/video/245182700
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:35334c600a
@@ -337,4 +337,4 @@ test_function("pnorm", args = c("q", "mean", "sd"))
 ## Summary
 
 *** =video_link
-//player.vimeo.com/video/227419546
+//player.vimeo.com/video/245182759
