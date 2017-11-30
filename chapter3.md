@@ -8,40 +8,25 @@ description : Understanding uncertainty
 
 
 *** =video_link
-//player.vimeo.com/video/227280339
+//player.vimeo.com/video/245182402
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:cd4dd49ae9
+
+
+
+--- type:VideoExercise lang:r xp:50 skills:1 key:34d6cb5fae
 ## How am I going to die?
 
-What is the risk of being killed by lightning in the next year?
 
-*** =instructions
-- 1 in 8000
-- 1 in 50 000
-- 1 in 500 000
-- 1 in 30 000 000
-- 1 in 40 000 000
-- 1 in 45 000 000
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-test_mc(correct = 4)
-```
-
+*** =video_link
+//player.vimeo.com/video/245182421
 
 --- type:VideoExercise lang:r xp:50 skills:1 key:94eafe5ef2
 ## What is probability?
 
 
 *** =video_link
-//player.vimeo.com/video/227283943
+//player.vimeo.com/video/245187752
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:d639cec9ad
@@ -74,7 +59,7 @@ test_mc(correct = 4)
 
 
 *** =video_link
-//player.vimeo.com/video/227285286
+//player.vimeo.com/video/245182435
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:068f66a92b
@@ -105,7 +90,7 @@ test_mc(correct = 5)
 
 
 *** =video_link
-//player.vimeo.com/video/227397094
+//player.vimeo.com/video/245182448
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:4e27ebef89
@@ -137,14 +122,14 @@ test_mc(correct = 2)
 
 
 *** =video_link
-//player.vimeo.com/video/227397169
+//player.vimeo.com/video/245182527
 
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8a8676de5d
 ## Probability vs frequency distributions (2)
 
-Which distribution remains the same as the number of repliates increases?
+Which distribution changes as the same as the number of repliates increases?
 
 *** =instructions
 - Probability distribution
@@ -158,7 +143,7 @@ Which distribution remains the same as the number of repliates increases?
 
 *** =sct
 ```{r}
-test_mc(correct = 1)
+test_mc(correct = 2)
 ```
 
 
@@ -167,7 +152,7 @@ test_mc(correct = 1)
 
 
 *** =video_link
-//player.vimeo.com/video/227400550
+//player.vimeo.com/video/245182556
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:52c2118876
@@ -190,7 +175,10 @@ Which of the following is NOT an example of a binomial distribution?
 
 *** =sct
 ```{r}
-test_mc(correct = 2)
+msg1 <- "Incorrect - In this case 'success' is 2 WT offspring and all other outcomes are 'failure' making it a binomial problem."
+msg2 <- "Correct - This problem does not have a fixed number of trials, so is not a binomial problem."
+msg3 <- "Incorrect - The binomial distribution will give you the probabilty of getting different proportions or frequencies of 6s from a set number of dice throws"
+test_mc(correct = 2, msg1, msg2, msg3)
 ```
 
 --- type:VideoExercise lang:r xp:50 skills:1 key:fcc69d0787
