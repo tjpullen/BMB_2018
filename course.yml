@@ -5,7 +5,12 @@ difficulty_level: 2
 programming_language: r
 time_needed: 1 hour
 datasets:
-  STAT5_2.RData: Stat5 2
+  STAT8v3.RData: Stat8v3
+  Ass_Data.RData: Ass data
   STAT5_1.RData: Stat5 1
-  STAT8v2.rdata: Stat8v2
+  STAT5_2.RData: Stat5 2
+  STAT8.RData: Stat8
+  STAT8.Rdata: Stat8
   STAT8.rdata: Stat8
+  STAT8v2.rdata: Stat8v2
+  mice5.rdata: Mice5

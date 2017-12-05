@@ -1,66 +1,465 @@
 ---
-title       : STAT5 - Hypothesis Testing 2
-description : Hypothesis testing in more detail
+title       : STAT8 - Correlation and Regression
+description : Investigating the association between two continuous variables
 
 
 
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:8780720741
+## Analysing two continuous variables
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b1eb285d60
-## One sample t test
+This chapter covers looking at two continuous variables. We're often interested in whether two variables are related to each other, because that may indicate that one influences the other. The simplest way to investigate that is to plot the two variables against each other.
 
-The **one sample t test** compares the mean of one sample to a particular value.
+Let's try this with one of the built-in datasets in R, the `cars` dataset. This has a range of speeds and their associated stopping distances for a car. We would expect there to be a fairly close relationship between these two variables because one will influence the other.
 
-**Example: Are our students taller than average?**
+As a first step, classify these as *explanatory* and *response* variables.
 
-The mean height of 19 year-old females in the WHO reference data is 163.1548 cm. You could use a one sample t test to compare a sample of this year's students to this mean value.
+Which is which?
 
 *** =instructions
-
-The height of a sample of 20 female students in this age group was measured and placed in the vector `heights`.
-
-Perform a one sample t test to compare the mean of `heights` to the populatio mean (`mu =`) of 163.15.
-
-You need to use the `t.test()` function, and you need to give it the list of all the heights in the sample rather than just the sample mean.
-
+- `speed` is the response variable and `dist` is the explanatory variable
+- `dist` is the response variable and `speed` is the explanatory variable
 *** =hint
-You need to enter 2 arguments: the vector of heights and the population mean: `mu = 163.15`
+
 *** =pre_exercise_code
 ```{r}
-set.seed(967)
-heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
+
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:377c84540a
+## Plotting continuous variables
+
+Since you would expect speed to influence stopping distance, speed is the explanatory variable and stopping distance the response variable. In other words, we want to investigate how much of the variation in stopping distance 'is explained by' changes in speed.
+
+In R, you use the `~` symbol to denote 'is explained by'. So `dist ~ speed` means 'is the stopping distance explained by speed?'
+
+*** =instructions
+Generate a scatter plot showing the extent to which `dist` is explained by `speed` using the `plot()` command.
+
+Note: you should include the argument `data = cars` to indicate where the data are located.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
 
 ```
 
 *** =sample_code
 ```{r}
-# t test to compare heights to 163.15
+# Scatterplot of dist explained by speed
+
+```
+
+*** =solution
+```{r}
+# Scatterplot of dist explained by speed
+plot(dist ~ speed, data = cars)
+
+```
+
+*** =sct
+```{r}
+# test_function("plot", args = c("formula", "data"))
+test_function("plot")
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:16406d9a7c
+## Visual assessment of association
+
+Now you've generated the scatter plot, take a closer look at it. (If it's too small you can drag the boundaries to expand it).
+
+Scatter plots give a good visual indication of the relationship (or lack of one) between two variables. Consider the following questions:
+
+- Is there a clear association between `dist` and `speed`?
+- If so, does the relationship appear linear (ie. the shape of a straight line) or non-linear?
+- Is the relationship positive (increased `speed` is associated with increased `dist`) or negative?
+
+Pick the best description of the relationship between `speed` and `dist`.
+*** =instructions
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+plot(cars$dist ~ cars$speed)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:e7eae34d07
+## Visual assessment of association (2)
+
+Great! The positive linear relationship was fairly clear to spot. It shows what you probably suspected, that as the speed increases, the distance required to stop a car also increases.
+
+For the rest of the chapter we'll also use a dataframe called `sim_data`. This contains five continous variables in separate columns (labelled `a` to `e`), and you'll investigate whether each of them is associated with column `a`.
+
+Let's start by seeing if the data in column `b` is associated with `a` with a scatter plot.
+
+*** =instructions
+Plot `b` against `a` from dataframe `sim_data` using the plot() function. (ie. `b` explained by `a`).
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+
+```
+
+*** =sample_code
+```{r}
+# Scatter plot of b against a from sim_data
+
+```
+
+*** =solution
+```{r}
+# Scatter plot of b against a from sim_data
+plot(b ~ a, data = sim_data)
+```
+
+*** =sct
+```{r}
+test_function('plot', args = c('formula', 'data'))
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d388f233eb
+## Visual assessment of association (3)
+
+Now take a look at the plot of `b` against `a` and choose which description of the association best fits the data.
+
+*** =instructions
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(b ~ a, data = sim_data)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 1)
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1f6ef98255
+## Visual assessment of association (4)
+
+Look at the plot of `c ~ a` and choose which description of the association best fits the data.
+
+*** =instructions
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(c ~ a, data = sim_data)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 4)
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee344d20d6
+## Visual assessment of association (5)
+
+Look at the plot of `d ~ a` and choose which description of the association best fits the data.
+
+*** =instructions
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(d ~ a, data = sim_data)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 3)
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1e2307476a
+## Visual assessment of association (6)
+
+Look at the plot of `e ~ a` and choose which description of the association best fits the data.
+
+*** =instructions
+- No clear association
+- linear positive association
+- linear negative association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(e ~ a, data = sim_data)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c373d5a45c
+## A shortcut for scatter plots
+
+If you want to draw scatter plots between several columns of a dataframe, the `pairs()` function is handy.
+
+You just enter the name of the dataframe as the argument for this function and it returns a scatterplot for each pair of columns.
+
+Try it with `sim_data`.
+
+*** =instructions
+Draw scatter plots between each column of `sim_data` using the `pairs()` function.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+```
+
+*** =sample_code
+```{r}
+# Pairwise scatter plots of data
 
 
 ```
 
 *** =solution
 ```{r}
-# t test to compare heights to 163.15
-t.test(heights, mu = 163.15)
+# Pairwise scatter plots of data
+pairs(sim_data)
+
 
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"))
+test_function("pairs", args = "x")
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:72c39a1ab0
+## Correlation
+
+Visually inspecting a scatter plot gives a good indication of the association between two variables. However, you will often need to quantify this.
+
+Correlation gives a measure of:
+
+- the strength of an association 
+- the direction of the relationship
+ 
+The `cor()` function gives the correlation coefficient for two variables. Actually, if you give it a dataframe, it'll return the correlation coefficient between every possible pair of columns.
+
+*** =instructions
+Use the `cor()` function to return the correlation between all pairs of columns in `sim_data`.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+```
+
+*** =sample_code
+```{r}
+# Correlation between columns in sim_data
+
+```
+
+*** =solution
+```{r}
+# Correlation between columns in sim_data
+cor(sim_data)
+```
+
+*** =sct
+```{r}
+test_function('cor', args = 'x')
 ```
 
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6f843ca2f9
+## Correlation (2)
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f15bb8f875
-## One sample t test (2)
+Compare the correlation coefficients with the scatterplots comparing each variable to `a`.
 
-Perform the t test again to compare `heights` to a population mean of 163.15.
+Correlation coefficients range from 0 to 1, with 1 representing the strongest association.
 
-Look at the output.
+Which type of relationship gives the highest correlation coefficient?
 
-With a threshold of $\alpha = 0.05$ do you reject the null hypothesis?
+*** =instructions
+- No clear association
+- linear association
+- non-linear association
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+par(mfrow = c(2,2))
+plot(b ~ a, data = sim_data)
+plot(c ~ a, data = sim_data)
+plot(d ~ a, data = sim_data)
+plot(e ~ a, data = sim_data)
+cor(sim_data)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:70238af6b2
+## Linear regression
+
+While correlation indicates the strength and direction of an association, you may need to define the relationship in more detail. Linear regression fits a straight line to the relationship which then allows you to predict the response variable from the explanatory variable.
+
+The `lm()` function performs linear regression and you enter data in the same format you used for scatter plots.
+
+*** =instructions
+Use the `lm()` function to describe the relationship between 'dist' and 'speed' in the 'cars' dataset.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Linear regression on `dist` against `speed` from `cars`
+
+```
+
+*** =solution
+```{r}
+# Linear regression on `dist` against `speed` from `cars`
+lm(dist ~ speed, data = cars)
+```
+
+*** =sct
+```{r}
+test_function("lm", args = c("formula", "data"))
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9411f0e035
+## Linear regression (2)
+
+Type `lm(dist ~ speed, data = cars)` into the console and look at the output.
+
+The general formula for a straight line is: $$y = ax + b$$
+Where
+
+- $a$ is the slope
+- $b$ is the intercept
+- $x$ is the explanatory variable
+- $y$ is the response variable
+
+You should be familiar with the formula of a straight line from school maths. Take a look at the output and see if you can work out what the slope of the line is.
+
+*** =instructions
+- -17.579
+- 3.932
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+lm(dist ~ speed, data = cars)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:44b471e84d
+## Linear Regression (3)
+
+You can use the output of `lm()` for a variety of purposes.
+
+Firstly, let's use it to plot the fitted line on a scatter plot. You can do this by saving the output of `lm()` to an object, then use this object as the argument in the `abline()` function (which draws a straight line over a plot).
+
+*** =instructions
+- Generate a scatter plot of `dist` against `speed` from `cars`.
+- Use the `lm()` function on `dist` and `speed` and direct the output to an object called `fit`
+- Use the `abline()` function to draw the line determined by `fit`
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Generate a scatter plot of dist against speed from cars
+
+
+# Store the output of lm() on dist and speed in fit
+fit <- 
+
+# Add the fitted line to the scatter plot
+
+
+```
+
+*** =solution
+```{r}
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+```
+
+*** =sct
+```{r}
+test_function("plot", args = c("formula", "data"))
+test_function("lm", args = c("formula", "data"))
+test_function("abline", args = "a")
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d6dd0aa65
+## Linear Regression (4)
+
+Take a look at the plot. Do you think the line is a good fit through the points?
+
+In a good fit, the line should go through the middle of the points. The points should be evenly spread either side of the line with no consistent pattern.
+
+Do you think that the line is a good fit to the data in `cars`?
 
 *** =instructions
 - yes
@@ -69,362 +468,14 @@ With a threshold of $\alpha = 0.05$ do you reject the null hypothesis?
 
 *** =pre_exercise_code
 ```{r}
-set.seed(967)
-heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
-```
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
 
-*** =sct
-```{r}
-test_mc(correct = 1)
-```
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
 
---- type:NormalExercise lang:r xp:100 skills:1 key:04f47ebac9
-## Two sample t test
-
-The **two sample t test** compares the means of two samples.
-
-Say you want to test whether a new compound causes overweight mice to lose weight. You could treat 10 mice with the drug and compare them to 10 mice which were not treated with the drug (or better still treated with a placebo drug).
-
-The weights of 10 mice for each cohort have been stored in `data1`. The data are arranged with the weights stored in the `weight` column and a `treatment` column containing either `control` or `drug`.
-
-*** =instructions
-
-First use a box plot to compare the weights grouped by treatment.
-
-Tip: Remember to use the `~` symbol in your formula for the boxplot.
-*** =hint
-The `~` symbol means, 'is explained by' or 'described by'. So you want to plot `weight` described by `treatment`. You also need to tell boxplot that the data is stored in `data1`.
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-```
-
-*** =sample_code
-```{r}
-# Boxplot of weight grouped by treatment
-
-```
-
-*** =solution
-```{r}
-# Boxplot of weight grouped by treatment
-boxplot(weight ~ treatment, data = data1)
-
-```
-
-*** =sct
-```{r}
-test_function("boxplot", args = c("formula", "data"))
-```
-
-
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:7706d7aba9
-## Two sample t test (2)
-
-Take a look at the boxplot (resize the panel if necessary).
-
-Does it look like the drug-treated mice have lost weight compared to the control mice?
-*** =instructions
-- Yes
-- No
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-boxplot(weight ~ treatment, data = data1)
-```
-
-*** =sct
-```{r}
-test_mc(correct = 1)
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:1bb567adc1
-## Two sample t test (3)
-
-Since it looks like there's an effect, let's do a formal hypothesis test to quantify this.
-
-*** =instructions
-Perform a two sample t test to compare the weights grouped by treatment option.
-
-*** =hint
-Since you are entering the same data in `t.test()` and `boxplot()` you can use exactly the same formula.
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-boxplot(weight ~ treatment, data = data1)
-```
-
-*** =sample_code
-```{r}
-# Boxplot of weight grouped by treatment
-boxplot(weight ~ treatment, data = data1)
-
-# t test of weight grouped by treatment
-
-
-```
-
-*** =solution
-```{r}
-# Boxplot of weight grouped by treatment
-boxplot(weight ~ treatment, data = data1)
-
-# t test of weight grouped by treatment
-t.test(weight ~ treatment, data = data1)
-
-```
-
-*** =sct
-```{r}
-test_function("t.test", args = c("formula", "data"))
-```
-
-
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e70c80f493
-## Two sample t test (4)
-
-Repeat the t test you just performed and look at the output.
-
-(t test on `weight` grouped by `treatment` in `data1`)
-
-This time with a threshold of $\alpha = 0.01$ do you reject the null hypothesis?
-
-*** =instructions
-- Yes
-- No
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-# boxplot(weight ~ treatment, data = data1)
-```
-
-*** =sct
-```{r}
-test_mc(correct = 2)
-```
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:028ac3286c
-## Dealing with variation between replicates
-
-Statistics can be used to distinguish an effect which is masked by random variation - in other words, to detect a signal over the background noise.
-
-The dataframe `data2`, contains the results of an siRNA knockdown experiment. In this experiment, a cell line was transfected with either an siRNA targetting a gene of interest (gene A) or control siRNA. The expression level of gene B was measured and is in the `output` column. 6 replicates were performed on different days. Take a look at the data to see if knocking down gene A has an effect on the expression level of gene B.
-
-*** =instructions
-Plot a boxplot for the `output` column grouped by `treatment` for the data in `data2`.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-```
-
-*** =sample_code
-```{r}
-# Boxplot of output grouped by treatment
-
-```
-
-*** =solution
-```{r}
-# Boxplot of output grouped by day
-boxplot(output ~ treatment, data = data2)
-
-```
-
-*** =sct
-```{r}
-test_function("boxplot", args = c("formula", "data"))
-```
-
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4fb9825166
-## Dealing with variation between replicates (2)
-
-Take a look at the boxplot you just plotted.
-
-Does it look like the siRNA has an effect on expression of gene B?
-
-*** =instructions
-- Yes, a large effect
-- Yes, a small but clear effect
-- Possibly, a small effect
-- No, no clear effect
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-boxplot(output ~ treatment, data = data2)
-```
-
-*** =sct
-```{r}
-test_mc(correct = 3)
-```
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:c1998ab6d2
-## Dealing with variation between replicates (3)
-
-It looks like there may be an effect, but the effect is small relative to the dispersion of the data.
-
-Perform a two sample t test to determine the likelihood of observing a result like this if there were no effect.
-*** =instructions
-Perform a two sample t test on `output` grouped by `treatment` from `data2`.
-
-Look at the output, and note down the *p value*.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-```
-
-*** =sample_code
-```{r}
-# t test on output grouped by treatment
-
-```
-
-*** =solution
-```{r}
-# t test on output grouped by treatment
-t.test(output ~ treatment, data = data2)
-
-```
-
-*** =sct
-```{r}
-test_function("t.test", args = c("formula", "data"))
-```
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:acf3acd269
-## Dealing with variation between replicates (4)
-
-With $\alpha = 0.05$ do you reject the null hypothesis?
-*** =instructions
-- Yes
-- No
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-test_mc(correct = 2)
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:77c5375f09
-## Looking at the data more closely
-
-You failed to reject the null hypothsis, but let's take a closer look at the data.
-
-The trouble with boxplots is that they don't show the individual data points. By looking at the raw data, you may see a pattern that isn't apparent from summary statistics.
-
-You can use the `plot()` function to plot individual data points grouped by `day` to see how much variation there was between replicates. However, if the grouping variable is a factor, R will produce a box plot. If you tell it to treat `day` as a numeric variable using `as.numeric(day)`, it will plot a scatter plot.
-
-*** =instructions
-Plot a scatter plot of `output` grouped by `day` from `data2`
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-```
-
-*** =sample_code
-```{r}
-# Scatter plot of output grouped by day
-
-```
-
-*** =solution
-```{r}
-# Scatter plot of output grouped by day
-plot(output ~ as.numeric(day), data = data2)
-```
-
-*** =sct
-```{r}
-test_function("plot", args = c("formula", "data"))
-```
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:660cefb3bd
-## Looking at the data (even) more closely
-
-That's great, but it would be helpful to know which datapoint refers to which treatment.
-
-You can easily do this by colouring the data points with the `col =` argument.
-
-
-*** =instructions
-Add in the `col = ` argument to colour the datapoints by `treatment`.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-```
-
-*** =sample_code
-```{r}
-# Scatter plot of output grouped by day and coloured by treatment
-plot(output ~ as.numeric(day), data = data2)
-```
-
-*** =solution
-```{r}
-# Scatter plot of output grouped by day and coloured by treatment
-plot(output ~ as.numeric(day), data = data2, col = treatment)
-
-```
-
-*** =sct
-```{r}
-test_function("plot", args = c("formula", "data"))
-# test_function("plot", args = "col")
-test_error()
-```
-
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dee54eda39
-## Dealing with variation between replicates (5)
-
-Look at the scatter plot and interpret what the data show.
-
-Note: Black = control and Red = siRNA
-
-*** =instructions
-- Output is consistently higher in siRNA group
-- Output is consistently higher in control group
-- No consistent difference between siRNA  control groups
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
-# Scatter plot of output grouped by day and coloured by treatment
-plot(output ~ as.numeric(day), data = data2, col = treatment)
+# Add the fitted line to the scatter plot
+abline(fit)
 ```
 
 *** =sct
@@ -433,227 +484,273 @@ test_mc(correct = 1)
 ```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:1dd88f988a
-## Paired t test
 
-Although the expression level in the control group varies considerably between replicates, the siRNA treatment appears to have a consistent effect on expression. The trouble with the two sample t test is that it compares the *mean* of each group. In this case, the variation between replicates swamps the siRNA effect.
+--- type:NormalExercise lang:r xp:100 skills:1 key:7eb5a01285
+## Linear regression output
 
-So how can you analyse the data so that the consistent effect is detected over the variation between replicates?
+You can get a more detailed output of the linear regression with the `summary()` function.
 
-The paired t test can help because, as the name suggests, it analyses the data in pairs. Try adding the argument `paired = True` to the t test to see how this affects the outcome.
+You stored the output of the `lm()` function in an object called `fit`.
 
+Now run the `summary()` on `fit` and take a look at the output.
 
 *** =instructions
-Perform a paired t test on `output` grouped by `treatment` in `data2`.
+Summarise `fit` with the `summary()` function.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_2.RData"))
 
 ```
 
 *** =sample_code
 ```{r}
-# Paired t test on output grouped by treatment
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+# Summarise fit
 
 ```
 
 *** =solution
 ```{r}
-# Paired t test on output grouped by treatment
-t.test(output ~ treatment, data = data2, paired = T)
+# Generate a scatter plot of dist against speed from cars
+plot(dist ~ speed, data = cars)
+
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Add the fitted line to the scatter plot
+abline(fit)
+
+# Summarise fit
+summary(fit)
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("formula", "data", "paired"))
+test_function("summary", args = "object")
 ```
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:869ab52c54
-## Paired t test (2)
 
-Once the background variation is controlled for, the siRNA effect now has $p < 0.00005$
 
-For the paired t test to work in R, the data must be arranged in the same order in each group. In this case, both the control and siRNA data are sorted by day.
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0e6cbc92d3
+## Linear regression output (2)
 
-The paired t test can be used when observations in one group can be paired with observations in the other group. This may be because the observations were performed on the same subject (eg. mouse or patient), or because they were performed at the same time. There needs to be some reason why an observation in one group is more closely related to one particular observation, than the other observations in the second group.
+Type `summary(fit)` into the console again and take a look at the output.
 
-Which of the following would not be suitable for analysis with a paired t test:
+The output contains a lot of detail which isn't all important right now.
+
+The *Coefficients:* section gives the intercept and slope, but also gives a probability that they're not zero along with stars to indicate significance.
+
+Near the bottom, look for the *adjusted R-squared value*. This gives a measure of how close to the line the data are. It has a scale of 0 - 1, with 1 indicating that all the points fall exacly on the line.
+
+What is the adjusted R-squared value for this fit?
+
 *** =instructions
-- Does caffeine affect reaction time? Reaction times were measured in 20 students before and after taking caffeine.
-- Does this cohort score higher marks than the last cohort? Exam scores from this year's cohort are compared to the same exam scores from last year's cohort.
-- Is there a difference between steps recorded by smartphone apps or dedicated pedometers? Over a 24 hour period, 100 students recorded their steps on both a smartphone app and a pedometer device. The results from each device were compared.
-- Have our students improved over the year? End of year exam scores of a cohort of 2nd year students were compared to their 1st year exam scores.
+- 0.0123
+- 15.38
+- 0.6511
+- 0.6438
+*** =hint
 
+*** =pre_exercise_code
+```{r}
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+```
+
+*** =sct
+```{r}
+test_mc(correct = 4)
+```
+--- type:VideoExercise lang:r xp:50 skills:1 key:76ab416d66
+## Fitted values and residuals
+
+
+*** =video_link
+//player.vimeo.com/video/228184212
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a93eb24885
+## Fitted values and residuals (2)
+
+While the R-squared value gives a measure of 'goodness-of-fit', it does have some limitations.
+
+Even if the line is a good fit for the data, a large amount of variation either side of the line will produce a low R-squared.
+
+Conversely, a high R-squared value isn't always an indication of a good fit because it does not detect consistent differences from the fitted line. You can see these differences by plotting the residuals against the fitted values.
+
+Note: you can access the residuals and fitted values of the `fit` object with `fit$residuals` and `fit$fitted.values`.
+
+*** =instructions
+Plot the residuals against fitted values for this fit.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
 
-```
-
-*** =sct
-```{r}
-test_mc(correct = 2)
-```
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1a4c22d00a
-## Assumptions of the t test (1)
-
-Hypothesis tests are based on certain assumptions about the data. If the data do not fit these assumptions, the probability calculations underlying the test are likely to be incorrect. This could increase the chance of false positive or false negative results with potentially serious consequences.
-
-So it is important to check the assumptions of any test you perform.
-
-**Assumption 1: Continuous independent variable and bivariate dependent variable**
-
-That's a bit of a mouthful, but it simply means that the outcome variable needs to be continuous, and the experimental variable needs to be categorical. Because the t test can only compare two groups, there can only have two levels for the dependent variable - that's what bivariate means. The underlying data may have more than two levels, but you can only analyse them two at a time with a t test.
-
-Which of the following analyses fulfils this first assumption:
-*** =instructions
-- Testing whether the genotype of transgenic mice (homozygous, heterozygous or wild type for mutation A) affects the blood glucose level.
-- Testing whether diet in mice (normal diet vs 'Western' diet) affects the time spent on running on an exercise wheel.
-- Testing whether the number of eggs consumed in a month affects the blood cholesterol level.
-- Testing whether the number of eggs consumed in a month affects the probability of suffering from myocardial infarction (heart attack).
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-test_mc(correct = 2)
-```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:cd73744d94
-## Assumptions of the t test (2)
-
-**Assumption 2: Normal distribution**
-
-The t test assumes the underlying population has a normal distribution. Remember, that this refers to the population, rather than your sample. If your sample appears normally distributed, this is a good indication that the population is too.
-
-The simplest way to assess normality, is to look at a histogram of the data.
-*** =instructions
-Draw a histogram of the `heights` data you used for the one sample t test.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-set.seed(967)
-heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
 ```
 
 *** =sample_code
 ```{r}
-# Histogram of heights
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Plot residuals against fitted values
 
 ```
 
 *** =solution
 ```{r}
-# Histogram of heights
-hist(heights)
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
 ```
 
 *** =sct
 ```{r}
-test_function("hist", args = "x")
+test_function("plot", args = "formula")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:e1591a53fc
-## Assumptions of the t test (3)
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2d5d9caa69
+## Residuals plot
 
-As you can see, the data appear to follow a roughly normal distribution, with most values clustered around the mean and fairly symmetrical tails.
+Take a look at the residuals plot. With a good fit, you should see a random distribution of points either side of the line. If you see a consistent pattern, it indicates that there is a consistent difference between the fitted line and the data and that the wrong shape of line is fitted.
 
-A normal quantile-quantile plot (Q-Q plot) is slightly more complicated but gives a clearer indication. This compares the quantiles (another name for percentiles) of your data with the theoretical quantiles from a normal distribution.
-
-If that sounds like gobbledygook, don't worry. All you have to do, is see how well the data fall along a straight line.
+Does this plot indicate a good fit?
 
 *** =instructions
-Use the `qqnorm()` and `qqline()` functions to test whether the `heights` data appear normally distributed.
+- yes
+- no
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-set.seed(967)
-heights <- rnorm(n = 20, mean = 163.1548 + 4, sd = 6.5409)
-hist(heights)
-```
+# Store the output of lm() on dist and speed in fit
+fit <- lm(dist ~ speed, data = cars)
 
-*** =sample_code
-```{r}
-# Normal Q-Q plot of heights
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
 
-
-# Add line to Q-Q plot of heights
-
-```
-
-*** =solution
-```{r}
-# Normal Q-Q plot of heights
-qqnorm(heights)
-
-# Add line to Q-Q plot of heights
-qqline(heights)
-
+abline(v = 0, col = 'red')
 ```
 
 *** =sct
 ```{r}
-test_function("qqnorm", args = "x")
-test_function("qqline", args = "x")
+test_mc(correct = 1)
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:ec14906601
+## Residuals plot (2)
 
---- type:NormalExercise lang:r xp:100 skills:1 key:73bcc6232e
-## Assumptions of the t test (4)
+Let's go back to the `sim_data` you looked at previously. Perform linear regression on `c` against `a` then plot the residuals against the fitted valules.
 
-**Assumption 3: Equal variance**
-
-The t test *usually* assumes that the two populations from which the samples have been taken have equal variance. In other words, the spread or dispersion of the values should be similar. You can check this by looking at the variance using summary statistics. (You could also check the standard deviation, since this is just the square root of the variance.)
-
-*Actually* by default R uses the Welch's t test, which does not assume equal variance. If you are confident that the variance of your two samples are equal, you can specify this with argument `var.equal = TRUE`. This will increase the power of the test a little, but is most situations there's little advantage.
 *** =instructions
-
+- Perform linear regression on `c` against `a` from `sim_data` and store the output in `fit`.
+- Plot the residuals against fitted values.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT5_1.RData"))
-# boxplot(weight ~ treatment, data = data1)
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 ```
 
 *** =sample_code
 ```{r}
-# Boxplot of weight grouped by treatment
-boxplot(weight ~ treatment, data = data1)
+# Linear regression on c ~ a in sim_data stored in fit
 
-# t test of weight grouped by treatment - unequal variance test
-t.test(weight ~ treatment, data = data1)
 
-# t test of weight grouped by treatment - equal variance test
+# Plot residuals against fitted values
+
 
 ```
 
 *** =solution
 ```{r}
-# Boxplot of weight grouped by treatment
-boxplot(weight ~ treatment, data = data1)
+# Linear regression on c ~ a in sim_data stored in fit
+fit <- lm(c ~ a, data = sim_data)
 
-# t test of weight grouped by treatment - unequal variance test
-t.test(weight ~ treatment, data = data1)
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
 
-# t test of weight grouped by treatment - equal variance test
-t.test(weight ~ treatment, data = data1)
 ```
 
 *** =sct
 ```{r}
+test_function("lm", args = c("formula", "data"))
+test_function("plot", args = "formula")
+```
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:677f611c28
+## Residuals plot (3)
 
+Now take a look at the residuals plot. Do you notice a pattern to the residuals or are they randomly distributed around the horizontal line (y = 0)?
+
+*** =instructions
+- randomly distributed
+- below the line on left above line on right
+- above the line on left below line on right
+- above the line in the middle below the line either end
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+# Linear regression on c ~ a in data stored in fit
+fit <- lm(c ~ a, data = sim_data)
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+abline(h = 0, col = "red")
 ```
 
+*** =sct
+```{r}
+test_mc(correct = 4)
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:04fcebd99a
+## Residuals plot (4)
+
+Take a look a `c` plotted against `a` and compare that to the residuals plot on the right.
+
+Both of these plots show that the data form a curved shape so a straight line doesn't fit the data well.
+
+Can you see the relationship between the first plot and residuals plot?
+
+*** =instructions
+- yes
+- no
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+par(mfrow = c(1,2))
+
+plot(c ~ a, data = sim_data)
+
+# Linear regression on c ~ a in data stored in fit
+fit <- lm(c ~ a, data = sim_data)
+abline(fit, col = "red")
+
+# Plot residuals against fitted values
+plot(fit$residuals ~ fit$fitted.values)
+abline(h = 0, col = "red")
+```
+
+*** =sct
+```{r}
+test_mc(correct = 1)
+```

@@ -178,7 +178,7 @@ Which of the following is NOT an example of a binomial distribution?
 msg1 <- "Incorrect - In this case 'success' is 2 WT offspring and all other outcomes are 'failure' making it a binomial problem."
 msg2 <- "Correct - This problem does not have a fixed number of trials, so is not a binomial problem."
 msg3 <- "Incorrect - The binomial distribution will give you the probabilty of getting different proportions or frequencies of 6s from a set number of dice throws"
-test_mc(correct = 2, msg1, msg2, msg3)
+test_mc(correct = 2, [msg1, msg2, msg3])
 ```
 
 --- type:VideoExercise lang:r xp:50 skills:1 key:fcc69d0787
