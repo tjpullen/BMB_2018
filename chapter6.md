@@ -12,7 +12,7 @@ This chapter covers looking at two continuous variables. We're often interested 
 
 Let's try this with one of the built-in datasets in R, the `cars` dataset. This has a range of speeds and their associated stopping distances for a car. We would expect there to be a fairly close relationship between these two variables because one will influence the other.
 
-As a first step, classify these as *explanatory* and *response* variable.
+As a first step, classify these as *explanatory* and *response* variables.
 
 Which is which?
 
@@ -41,7 +41,7 @@ In R, you use the `~` symbol to denote 'is explained by'. So `dist ~ speed` mean
 *** =instructions
 Generate a scatter plot showing the extent to which `dist` is explained by `speed` using the `plot()` command.
 
-Note: you should include the argument `data = cars` to indicated where the data are located.
+Note: you should include the argument `data = cars` to indicate where the data are located.
 *** =hint
 
 *** =pre_exercise_code
