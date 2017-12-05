@@ -605,8 +605,8 @@ qqline(heights)
 
 *** =sct
 ```{r}
-test_function("qqnorm", args = "x")
-test_function("qqline", args = "x")
+test_function("qqnorm", args = "y")
+test_function("qqline", args = "y")
 ```
 
 
