@@ -103,30 +103,30 @@ test_mc(correct = 2)
 
 Great! The positive linear relationship was fairly clear to spot. It shows what you probably suspected, that as the speed increases, the distance required to stop a car also increases.
 
-For the rest of the chapter we'll also use a dataframe called `data`. This contains five continous variables in separate columns (labelled `a` to `e`), and you'll investigate whether each of them is associated with column `a`.
+For the rest of the chapter we'll also use a dataframe called `sim_data`. This contains five continous variables in separate columns (labelled `a` to `e`), and you'll investigate whether each of them is associated with column `a`.
 
 Let's start by seeing if the data in column `b` is associated with `a` with a scatter plot.
 
 *** =instructions
-Plot `b` against `a` from dataframe `data` using the plot() function. (ie. `b` explained by `a`).
+Plot `b` against `a` from dataframe `sim_data` using the plot() function. (ie. `b` explained by `a`).
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 
 ```
 
 *** =sample_code
 ```{r}
-# Scatter plot of `b` against `a` from `data`
+# Scatter plot of b against a from sim_data
 
 ```
 
 *** =solution
 ```{r}
-# Scatter plot of `b` against `a` from `data`
-plot(b ~ a, data = data)
+# Scatter plot of b against a from sim_data
+plot(b ~ a, data = sim_data)
 ```
 
 *** =sct
@@ -149,8 +149,8 @@ Now take a look at the plot of `b` against `a` and choose which description of t
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
-plot(b ~ a, data = data)
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(b ~ a, data = sim_data)
 ```
 
 *** =sct
@@ -172,8 +172,8 @@ Look at the plot of `c ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
-plot(c ~ a, data = data)
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(c ~ a, data = sim_data)
 ```
 
 *** =sct
@@ -195,8 +195,8 @@ Look at the plot of `d ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
-plot(d ~ a, data = data)
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(d ~ a, data = sim_data)
 ```
 
 *** =sct
@@ -218,8 +218,8 @@ Look at the plot of `e ~ a` and choose which description of the association best
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
-plot(e ~ a, data = data)
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
+plot(e ~ a, data = sim_data)
 ```
 
 *** =sct
@@ -234,15 +234,15 @@ If you want to draw scatter plots between several columns of a dataframe, the `p
 
 You just enter the name of the dataframe as the argument for this function and it returns a scatterplot for each pair of columns.
 
-Try it with `data`.
+Try it with `sim_data`.
 
 *** =instructions
-Draw scatter plots between each column of `data` using the `pairs()` function.
+Draw scatter plots between each column of `sim_data` using the `pairs()` function.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 ```
 
 *** =sample_code
@@ -255,7 +255,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/dat
 *** =solution
 ```{r}
 # Pairwise scatter plots of data
-pairs(data)
+pairs(sim_data)
 
 
 ```
@@ -277,24 +277,24 @@ Correlation gives a measure of:
 The `cor()` function gives the correlation coefficient for two variables. Actually, if you give it a dataframe, it'll return the correlation coefficient between every possible pair of columns.
 
 *** =instructions
-Use the `cor()` function to return the correlation between all pairs of columns in `data`.
+Use the `cor()` function to return the correlation between all pairs of columns in `sim_data`.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 ```
 
 *** =sample_code
 ```{r}
-# Correlation between columns in `data`
+# Correlation between columns in sim_data
 
 ```
 
 *** =solution
 ```{r}
-# Correlation between columns in `data`
-cor(data)
+# Correlation between columns in sim_data
+cor(sim_data)
 ```
 
 *** =sct
@@ -320,13 +320,13 @@ Which type of relationship gives the highest correlation coefficient?
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 par(mfrow = c(2,2))
-plot(b ~ a, data = data)
-plot(c ~ a, data = data)
-plot(d ~ a, data = data)
-plot(e ~ a, data = data)
-cor(data)
+plot(b ~ a, data = sim_data)
+plot(c ~ a, data = sim_data)
+plot(d ~ a, data = sim_data)
+plot(e ~ a, data = sim_data)
+cor(sim_data)
 ```
 
 *** =sct
@@ -654,21 +654,21 @@ test_mc(correct = 1)
 --- type:NormalExercise lang:r xp:100 skills:1 key:ec14906601
 ## Residuals plot (2)
 
-Let's go back to the `data` you looked at previously. Perform linear regression on `c` against `a` then plot the residuals against the fitted valules.
+Let's go back to the `sim_data` you looked at previously. Perform linear regression on `c` against `a` then plot the residuals against the fitted valules.
 
 *** =instructions
-- Perform linear regression on `c` against `a` from `data` and store the output in `fit`.
+- Perform linear regression on `c` against `a` from `sim_data` and store the output in `fit`.
 - Plot the residuals against fitted values.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 ```
 
 *** =sample_code
 ```{r}
-# Linear regression on c ~ a in data stored in fit
+# Linear regression on c ~ a in sim_data stored in fit
 
 
 # Plot residuals against fitted values
@@ -678,8 +678,8 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/dat
 
 *** =solution
 ```{r}
-# Linear regression on c ~ a in data stored in fit
-fit <- lm(c ~ a, data = data)
+# Linear regression on c ~ a in sim_data stored in fit
+fit <- lm(c ~ a, data = sim_data)
 
 # Plot residuals against fitted values
 plot(fit$residuals ~ fit$fitted.values)
@@ -705,9 +705,9 @@ Now take a look at the residuals plot. Do you notice a pattern to the residuals 
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 # Linear regression on c ~ a in data stored in fit
-fit <- lm(c ~ a, data = data)
+fit <- lm(c ~ a, data = sim_data)
 
 # Plot residuals against fitted values
 plot(fit$residuals ~ fit$fitted.values)
@@ -736,13 +736,13 @@ Can you see the relationship between the first plot and residuals plot?
 
 *** =pre_exercise_code
 ```{r}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_4315/datasets/STAT8v2.rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_6093/datasets/STAT8v3.Rdata"))
 par(mfrow = c(1,2))
 
-plot(c ~ a, data = data)
+plot(c ~ a, data = sim_data)
 
 # Linear regression on c ~ a in data stored in fit
-fit <- lm(c ~ a, data = data)
+fit <- lm(c ~ a, data = sim_data)
 abline(fit, col = "red")
 
 # Plot residuals against fitted values
