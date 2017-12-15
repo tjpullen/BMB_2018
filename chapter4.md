@@ -19,7 +19,7 @@ The mean height of 19 year-old females in the WHO reference data is 163.1548 cm.
 
 The height of a sample of 20 female students in this age group was measured and placed in the vector `heights`.
 
-Perform a one sample t test to compare the mean of `heights` to the populatio mean (`mu =`) of 163.15.
+Perform a one sample t test to compare the mean of `heights` to the population mean (`mu =`) of 163.15.
 
 You need to use the `t.test()` function, and you need to give it the list of all the heights in the sample rather than just the sample mean.
 
